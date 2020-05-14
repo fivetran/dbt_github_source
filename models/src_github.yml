@@ -23,6 +23,14 @@ sources:
           - name: closed
             description: Boolean variable for if the issue was closed (true) or re-opened (false)
 
+      - name: issue_comment
+        description: Comments made to an issue
+        columns:
+          - name: issue_id
+            description: Foreign key that references the issue table
+          - name: uer_id
+            description: Foreign key that references the user table, representing the user that made the comment.
+            
       - name: issue_label
         description: The current labels attached to an issue
         columns:
