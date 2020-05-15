@@ -13,8 +13,8 @@ This package is designed to do the following:
 This package contains staging models, designed to work simultaneously with our [github modeling package](https://github.com/fivetran/dbt_github).  The staging models are designed to:
 * Remove any rows that are soft-deleted
 * Name columns consistently across all packages:
-    * Boolean fields are prefixed with 'is_' or 'has_'
-    * Timestamps are appended with '_at'
+    * Boolean fields are prefixed with `is_` or `has_`
+    * Timestamps are appended with `_at`
     * ID primary keys are prefixed with the name of the table.  For example, the user table's ID column is renamed user_id.
 
 
