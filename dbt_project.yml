@@ -3,8 +3,6 @@ config-version: 2
 name: 'github_source'
 version: '0.0.1'
 
-profile: 'fivetran'
-
 models:
     github_source:
         materialized: ephemeral

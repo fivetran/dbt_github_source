@@ -2,19 +2,39 @@ version: 2
 
 sources:
   - name: github
+    
+    loader: fivetran
+    loaded_at_field: _fivetran_synced
+      
+    freshness:
+      warn_after: {count: 72, period: hour}
+      error_after: {count: 168, period: hour}
+
 
     tables:
       - name: issue_assignee
         description: Table with the current user(s) assigned to an issue
+        loaded_at_field: _fivetran_synced
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns: 
+              - issue_id
+              - user_id
         columns:
           - name: issue_id
             description: Foreign key that references the issue table
-          - name: uer_id
+          - name: user_id
             description: Foreign key that references the user table
 
 
       - name: issue_closed_history
         description: Table to track when an issue is closed or re-opened
+        loaded_at_field: _fivetran_synced
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns: 
+              - issue_id
+              - updated_at
         columns:
           - name: issue_id
             description: Foreign key that references the issue table
@@ -25,14 +45,29 @@ sources:
 
       - name: issue_label
         description: The current labels attached to an issue
+        loaded_at_field: _fivetran_synced
         columns:
           - name: issue_id
             description: Foreign key that references the issue table
           - name: label
             description: Text of the label
             
+      - name: issue_comment
+        description: Table that contains comments made on issues
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: id
+            tests:
+                - unique
+                - not_null
+          - name: issue_id
+            description: Foreign key that references the issue table
+          - name: user_id
+            description: Foreign key that references the user table
+
       - name: issue_merged
         description: Table that tracks when an issue (always a pull request) is merged
+        loaded_at_field: _fivetran_synced
         columns:
           - name: issue_id
             description: Foreign key that references the issue table.  This table will only refernece issues that are pull requests
@@ -41,9 +76,13 @@ sources:
 
       - name: issue
         description: Table that contains 1 entry for every issue created.  Pull Requests also create an entry in this table, and there is a boolean field to determine if an entry is a pull request.
+        loaded_at_field: _fivetran_synced
         columns:
-          - name: issue_id
+          - name: id
             description: System generated unique id for the issue.  This is not the number that appears in the URL.
+            tests:
+                - unique
+                - not_null
           - name: body
             description: The text of the main description of the issue.
           - name: closed_at
@@ -69,7 +108,12 @@ sources:
 
       - name: pull_request_review
         description: Table containing reviews made to pull requests
+        loaded_at_field: _fivetran_synced
         columns:
+          - name: id
+            tests:
+                - unique
+                - not_null
           - name: pull_request_id
             description: Foreign key that references the pull request table.
           - name: submitted_at
@@ -81,9 +125,13 @@ sources:
             
       - name: pull_request
         description: A special type of issue that is created when a user wants to merge one branch of code into another
+        loaded_at_field: _fivetran_synced
         columns:
-          - name: pull_request_id
+          - name: id
             description: System generated unique id for the pull request.
+            tests:
+                - unique
+                - not_null
           - name: issue_id
             description: Foreign key that references the issue table.
           - name: head_repo_id
@@ -93,14 +141,21 @@ sources:
             
       - name: repository
         description: Table representing the file structure of a directory under git control
+        freshness: null
         columns:
-          - name: repository_id
+          - name: id
             description: System generated unique id for the repository.
+            tests:
+                - unique
+                - not_null
           - name: full_name
             description: The name of the git repository.
+          - name: private
+            description: Boolean field indicating whether the repository is private (true) or public (false).
             
       - name: requested_reviewer_history
         description: Table containing when a user requests another user to review a pull request
+        loaded_at_field: _fivetran_synced
         columns:
           - name: pull_request_id
             description: Foreign key that references the pull request table.
@@ -111,9 +166,13 @@ sources:
             
       - name: user
         description: Table representing contributors to a git project
+        freshness: null
         columns:
-          - name: user_id
+          - name: id
             description: System generated unique id for the user.
+            tests:
+                - unique
+                - not_null
           - name: login
             description: The alias the user uses to login to github.
           - name: name

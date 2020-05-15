@@ -7,7 +7,8 @@ with repository as (
 
     select 
       id as repository_id,
-      full_name
+      full_name,
+      private as is_private
     from repository
 )
 

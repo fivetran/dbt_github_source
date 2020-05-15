@@ -8,7 +8,7 @@ with issue_closed_history as (
     select 
       issue_id,
       updated_at,
-      closed
+      closed as is_closed
     from issue_closed_history
 )
 
