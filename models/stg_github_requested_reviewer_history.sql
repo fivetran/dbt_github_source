@@ -8,7 +8,8 @@ with requested_reviewer_history as (
     select 
       pull_request_id,
       created_at,
-      requested_id
+      requested_id,
+      removed
     from requested_reviewer_history
 )
 

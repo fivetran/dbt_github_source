@@ -1,6 +1,6 @@
-# Github 
+# GitHub 
 
-This package models Github data from [Fivetran's connector](https://fivetran.com/docs/applications/github). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit).
+This package models GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit).
 
 This package is designed to do the following:
 * Add descriptions to tables and columns that are synced using Fivetran
@@ -10,7 +10,7 @@ This package is designed to do the following:
 
 ### Models
 
-This package contains staging models, designed to work simultaneously with our [github modeling package](https://github.com/fivetran/dbt_github).  The staging models are designed to:
+This package contains staging models, designed to work simultaneously with our [GitHub modeling package](https://github.com/fivetran/dbt_github).  The staging models are designed to:
 * Remove any rows that are soft-deleted
 * Name columns consistently across all packages:
     * Boolean fields are prefixed with `is_` or `has_`
@@ -22,9 +22,19 @@ This package contains staging models, designed to work simultaneously with our [
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 ## Configuration
-The [variables](https://docs.getdbt.com/docs/using-variables) needed to configure this package are as follows:
+By default this package will run using your target database, and the `github` schema. If this is not where your GitHub data is (perhaps your gitHub schema is `Github_fivetran`), please add the following configuration to your `dbt_project.yml` file:
 
-TBD
+```yml
+# dbt_project.yml
+
+...
+config-version: 2
+
+vars:
+  github_source:
+    github_database: your_database_name
+    github_schema: your_schema_name 
+```
 
 ### Contributions ###
 

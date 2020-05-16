@@ -1,4 +1,4 @@
-with user as (
+with github_user as (
 
     select *
     from {{ source('github', 'user') }}
@@ -11,7 +11,7 @@ with user as (
       name,
       bio,
       company
-    from user
+    from github_user
 )
 
 select *
