@@ -8,7 +8,7 @@ This package is designed to do the following:
 * Add column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
 * Model staging tables, which will be used in our transform package
 
-### Models
+## Models
 
 This package contains staging models, designed to work simultaneously with our [GitHub modeling package](https://github.com/fivetran/dbt_github).  The staging models are designed to:
 * Remove any rows that are soft-deleted
@@ -36,14 +36,14 @@ vars:
     github_schema: your_schema_name 
 ```
 
-### Contributions ###
+## Contributions
 
 Additional contributions to this package are very welcome! Please create issues
 or open PRs against `master`. Check out 
 [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) 
 on the best workflow for contributing to a package.
 
-### Resources:
+## Resources:
 - Learn more about Fivetran [here](https://fivetran.com/docs)
 - Check out [Fivetran's blog](https://fivetran.com/blog)
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
