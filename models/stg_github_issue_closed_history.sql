@@ -1,9 +1,8 @@
 with issue_closed_history as (
 
     select *
-    from {{ source('github', 'issue_closed_history') }}
+    from {{ var('issue_closed_history') }}
 
-), fields as (
 
     select 
       issue_id,

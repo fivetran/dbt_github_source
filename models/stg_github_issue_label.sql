@@ -1,7 +1,7 @@
 with issue_label as (
 
     select *
-    from {{ source('github', 'issue_label') }}
+    from {{ var('issue_label') }}
 
 ), fields as (
 

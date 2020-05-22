@@ -1,7 +1,7 @@
 with issue_assignee as (
 
     select *
-    from {{ source('github', 'issue_assignee') }}
+    from {{ var('issue_assignee') }}
 
 ), fields as (
 

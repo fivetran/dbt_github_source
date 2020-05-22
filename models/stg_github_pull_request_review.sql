@@ -1,7 +1,7 @@
 with pull_request_review as (
 
     select *
-    from {{ source('github', 'pull_request_review') }}
+    from {{ var('pull_request_review') }}
 
 ), fields as (
 

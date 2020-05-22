@@ -1,7 +1,7 @@
 with issue as (
 
     select *
-    from {{ source('github', 'issue') }}
+    from {{ var('issue') }}
 
 ), fields as (
 

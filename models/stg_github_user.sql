@@ -1,7 +1,7 @@
 with github_user as (
 
     select *
-    from {{ source('github', 'user') }}
+    from {{ var('user') }}
 
 ), fields as (
 

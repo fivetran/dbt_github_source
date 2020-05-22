@@ -1,7 +1,7 @@
 with issue_comment as (
 
     select *
-    from {{ source('github', 'issue_comment') }}
+    from {{ var('issue_comment') }}
 
 ), fields as (
 

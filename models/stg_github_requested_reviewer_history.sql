@@ -1,7 +1,7 @@
 with requested_reviewer_history as (
 
     select *
-    from {{ source('github', 'requested_reviewer_history') }}
+    from {{ var('requested_reviewer_history') }}
 
 ), fields as (
 

@@ -1,7 +1,7 @@
 with repository as (
 
     select *
-    from {{ source('github', 'repository') }}
+    from {{ var('repository') }}
 
 ), fields as (
 
