@@ -2,15 +2,15 @@
 
 This package models GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit).
 
-This package is designed enrich your Fivetran data by doing the following:
-* Add descriptions to tables and columns that are synced using Fivetran
-* Add freshness tests to source data
-* Add column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
-* Model staging tables, which will be used in our transform package
+This package enriches your Fivetran data by doing the following:
+* Adds descriptions to tables and columns that are synced using Fivetran
+* Adds freshness tests to source data
+* Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
+* Models staging tables, which will be used in our transform package
 
 ## Models
 
-This package contains staging models, designed to work simultaneously with our [GitHub modeling package](https://github.com/fivetran/dbt_github).  The staging models are designed to:
+This package contains staging models, designed to work simultaneously with our [GitHub modeling package](https://github.com/fivetran/dbt_github).  The staging models:
 * Remove any rows that are soft-deleted
 * Name columns consistently across all packages:
     * Boolean fields are prefixed with `is_` or `has_`
@@ -19,10 +19,10 @@ This package contains staging models, designed to work simultaneously with our [
 
 
 ## Installation Instructions
-Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
+Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 ## Configuration
-By default this package will run using your target database, and the `github` schema. If this is not where your GitHub data is (perhaps your gitHub schema is `Github_fivetran`), please add the following configuration to your `dbt_project.yml` file:
+By default this package will run using your target database, and the `github` schema. If this is not where your GitHub data is (perhaps your gitHub schema is `Github_fivetran`), add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
@@ -44,10 +44,10 @@ or open PRs against `master`. Check out
 on the best workflow for contributing to a package.
 
 ## Resources:
-- Learn more about Fivetran [here](https://fivetran.com/docs)
+- Learn more about Fivetran [in the Fivetran docs](https://fivetran.com/docs)
 - Check out [Fivetran's blog](https://fivetran.com/blog)
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
+- Learn more about dbt [in the dbt docs](https://docs.getdbt.com/docs/introduction)
 - Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
 - Join the [chat](http://slack.getdbt.com/) on Slack for live discussions and support
 - Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+- Check out [the dbt blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
