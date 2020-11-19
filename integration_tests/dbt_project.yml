@@ -1,0 +1,56 @@
+name: 'github_source_integration_tests'
+version: '1.0.0'
+profile: 'integration_tests'
+config-version: 2
+
+
+vars:
+  github_source:
+    issue_assignee: "{{ ref('github_issue_assignee_data') }}"
+    issue_closed_history: "{{ ref('github_issue_closed_history_data') }}"
+    issue_comment: "{{ ref('github_issue_comment_data') }}"
+    issue_label: "{{ ref('github_issue_label_data') }}"
+    issue_merged: "{{ ref('github_issue_merged_data') }}"
+    issue: "{{ ref('github_issue_data') }}"
+    pull_request_review: "{{ ref('github_pull_request_review_data') }}"
+    pull_request: "{{ ref('github_pull_request_data') }}"
+    repository: "{{ ref('github_repository_data') }}"
+    requested_reviewer_history: "{{ ref('github_requested_reviewer_history_data') }}"
+    user: "{{ ref('github_user_data') }}"
+    github_schema: github_source_integration_tests
+
+seeds:
+  github_source_integration_tests:
+    github_issue_assignee_data:
+      +column_types:
+        _fivetran_synced: timestamp
+    github_issue_closed_history_data:
+      +column_types:
+        _fivetran_synced: timestamp
+    github_issue_comment_data:
+      +column_types:
+        _fivetran_synced: timestamp
+    github_issue_label_data:
+      +column_types:
+        _fivetran_synced: timestamp
+    github_issue_merged_data:
+      +column_types:
+        _fivetran_synced: timestamp
+    github_issue_data:
+      +column_types:
+        _fivetran_synced: timestamp
+    github_pull_request_review_data:
+      +column_types:
+        _fivetran_synced: timestamp
+    github_pull_request_data:
+      +column_types:
+        _fivetran_synced: timestamp
+    github_repository_data:
+      +column_types:
+        _fivetran_synced: timestamp
+    github_requested_reviewer_history_data:
+      +column_types:
+        _fivetran_synced: timestamp
+    github_user_data:
+      +column_types:
+        _fivetran_synced: timestamp
