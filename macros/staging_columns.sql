@@ -81,7 +81,7 @@
     {"name": "closed_at", "datatype": dbt_utils.type_timestamp()},
     {"name": "created_at", "datatype": dbt_utils.type_timestamp()},
     {"name": "id", "datatype": dbt_utils.type_int(), "alias": "issue_id"},
-    {"name": "locked", "datatype": "boolean"}, "alias": "is_locked",
+    {"name": "locked", "datatype": "boolean"}, "alias": "is_locked"},
     {"name": "milestone_id", "datatype": dbt_utils.type_int()},
     {"name": "number", "datatype": dbt_utils.type_int()}, "alias": "issue_number",
     {"name": "pull_request", "datatype": "boolean"}, "alias": "is_pull_request",
