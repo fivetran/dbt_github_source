@@ -80,7 +80,7 @@ sources:
         description: Table that contains 1 entry for every issue created.  Pull Requests also create an entry in this table, and there is a boolean field to determine if an entry is a pull request.
         loaded_at_field: _fivetran_synced
         columns:
-          - name: id
+          - name: issue_id
             description: System generated unique id for the issue.  This is not the number that appears in the URL.
             tests:
                 - unique
@@ -93,9 +93,9 @@ sources:
             description: Timestamp of when the issue was created.
           - name: milestone_id
             description: Foreign key that references the milestone table representing the current milestone the issue is in.
-          - name: number
+          - name: issue_number
             description: The issue number within a repository.  Is unique by repository, but not across repositories.
-          - name: pull_request
+          - name: is_pull_request
             description: Boolean for is the issue is a pull request (true) ot regular issue (false)
           - name: repository_id
             description: Foreign key that references the repository table.

@@ -44,9 +44,9 @@ renamed as (
             )
         }}
 
-        {% if var('user_pass_through_columns') != [] %}
+        {% if var('issue_pass_through_columns') != [] %}
         ,
-        {{ var('user_pass_through_columns') | join (", ")}}
+        {{ var('issue_pass_through_columns') | join (", ")}}
 
         {% endif %}
 
