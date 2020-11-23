@@ -46,9 +46,7 @@ sources:
         description: Table that contains comments made on issues
         columns:
           - name: id
-            tests:
-                - unique
-                - not_null
+            description: System generated unique id for the issue comment.
           - name: issue_id
             description: Foreign key that references the issue table
           - name: user_id
@@ -97,9 +95,7 @@ sources:
         description: Table containing reviews made to pull requests
         columns:
           - name: id
-            tests:
-                - unique
-                - not_null
+            description: System generated unique id for the pull request review.
           - name: pull_request_id
             description: Foreign key that references the pull request table.
           - name: submitted_at

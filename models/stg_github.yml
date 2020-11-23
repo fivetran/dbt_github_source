@@ -40,6 +40,10 @@ models:
   - name: stg_github__issue_comment
     description: Table that contains comments made on issues
     columns:
+      - name: issue_comment_id
+        tests:
+          - unique
+          - not_null
       - name: issue_id
         description: Foreign key that references the issue table
       - name: user_id
@@ -87,6 +91,10 @@ models:
   - name: stg_github__pull_request_review
     description: Table containing reviews made to pull requests
     columns:
+      - name: pull_request_review_id
+        tests:
+          - unique
+          - not_null
       - name: pull_request_id
         description: Foreign key that references the pull request table.
       - name: submitted_at
