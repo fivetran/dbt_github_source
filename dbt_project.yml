@@ -1,5 +1,3 @@
-#circlci test
-
 config-version: 2
 
 name: 'github_source'

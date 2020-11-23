@@ -1,14 +1,28 @@
 with issue_comment as (
 
     select *
-    from {{ var('issue_comment') }}
+    from {{ ref('stg_github__issue_comment_tmp') }}
+
+), macro as (
+            {{
+            fivetran_utils.fill_staging_columns(
+                source_columns=adapter.get_columns_in_relation(ref('stg_github__issue_comment_tmp')),
+                staging_columns=get_issue_comment_columns()
+            )
+        }}
+        {% if var('issue_comment_pass_through_columns') != [] %}
+        ,
+        {{ var('issue_comment_pass_through_columns') | join (", ")}}
+
+        {% endif %}
+    from issue_comment
 
 ), fields as (
 
     select 
       issue_id,
       user_id
-    from issue_comment
+    from macro
 )
 
 select *

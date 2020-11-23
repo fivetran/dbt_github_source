@@ -1,8 +1,21 @@
-/*
 with issue as (
 
     select *
-    from {{ var('issue') }}
+    from {{ ref('stg_github__issue_tmp') }}
+
+), macro as (
+            {{
+            fivetran_utils.fill_staging_columns(
+                source_columns=adapter.get_columns_in_relation(ref('stg_github__issue_tmp')),
+                staging_columns=get_issue_columns()
+            )
+        }}
+        {% if var('issue_pass_through_columns') != [] %}
+        ,
+        {{ var('issue_pass_through_columns') | join (", ")}}
+
+        {% endif %}
+    from issue 
 
 ), fields as (
 
@@ -20,39 +33,8 @@ with issue as (
       title,
       updated_at,
       user_id
-    from issue
+    from macro
 )
 
 select *
 from fields
-*/
-with source as (
-
-    select *
-    from {{ ref('stg_github__issue_tmp') }}
-
-),
-
-renamed as (
-
-    select
-    
-        {{
-            fivetran_utils.fill_staging_columns(
-                source_columns=adapter.get_columns_in_relation(ref('stg_github__issue_tmp')),
-                staging_columns=get_issue_columns()
-            )
-        }}
-
-        {% if var('issue_pass_through_columns') != [] %}
-        ,
-        {{ var('issue_pass_through_columns') | join (", ")}}
-
-        {% endif %}
-
-    from source
-
-)
-
-select * 
-from renamed

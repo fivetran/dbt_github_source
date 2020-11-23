@@ -42,7 +42,7 @@ sources:
             description: Foreign key that references the issue table
           - name: updated_at
             description: Timestamp of when the action took place
-          - name: closed
+          - name: is_closed
             description: Boolean variable for if the issue was closed (true) or re-opened (false)
 
       - name: stg_github__issue_label

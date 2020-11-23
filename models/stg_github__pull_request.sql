@@ -1,7 +1,21 @@
 with pull_request as (
 
     select *
-    from {{ var('pull_request') }}
+    from {{ ref('stg_github__pull_request_tmp') }}
+
+), macro as (
+            {{
+            fivetran_utils.fill_staging_columns(
+                source_columns=adapter.get_columns_in_relation(ref('stg_github__pull_request_tmp')),
+                staging_columns=get_pull_request_columns()
+            )
+        }}
+        {% if var('pull_request_pass_through_columns') != [] %}
+        ,
+        {{ var('pull_request_pass_through_columns') | join (", ")}}
+
+        {% endif %}
+    from pull_request
 
 ), fields as (
 
@@ -10,7 +24,7 @@ with pull_request as (
       issue_id,
       head_repo_id,
       head_user_id
-    from pull_request
+    from macro
 )
 
 select *

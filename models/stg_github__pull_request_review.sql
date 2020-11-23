@@ -1,7 +1,21 @@
 with pull_request_review as (
 
     select *
-    from {{ var('pull_request_review') }}
+    from {{ ref('stg_github__pull_request_review_tmp') }}
+
+), macro as (
+            {{
+            fivetran_utils.fill_staging_columns(
+                source_columns=adapter.get_columns_in_relation(ref('stg_github__pull_request_review_tmp')),
+                staging_columns=get_pull_request_review_columns()
+            )
+        }}
+        {% if var('pull_request_review_pass_through_columns') != [] %}
+        ,
+        {{ var('pull_request_review_pass_through_columns') | join (", ")}}
+
+        {% endif %}
+    from pull_request_review
 
 ), fields as (
 
@@ -10,7 +24,7 @@ with pull_request_review as (
       submitted_at,
       state,
       user_id
-    from pull_request_review
+    from macro
 )
 
 select *
