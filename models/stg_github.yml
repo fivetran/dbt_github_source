@@ -14,7 +14,6 @@ models:
       - name: user_id
         description: Foreign key that references the user table
 
-
   - name: stg_github__issue_closed_history
     description: Table to track when an issue is closed or re-opened
     tests:
@@ -41,10 +40,6 @@ models:
   - name: stg_github__issue_comment
     description: Table that contains comments made on issues
     columns:
-      - name: id
-        tests:
-            - unique
-            - not_null
       - name: issue_id
         description: Foreign key that references the issue table
       - name: user_id
@@ -92,10 +87,6 @@ models:
   - name: stg_github__pull_request_review
     description: Table containing reviews made to pull requests
     columns:
-      - name: id
-        tests:
-            - unique
-            - not_null
       - name: pull_request_id
         description: Foreign key that references the pull request table.
       - name: submitted_at
@@ -108,7 +99,7 @@ models:
   - name: stg_github__pull_request
     description: A special type of issue that is created when a user wants to merge one branch of code into another
     columns:
-      - name: id
+      - name: pull_request_id
         description: System generated unique id for the pull request.
         tests:
             - unique
@@ -124,14 +115,14 @@ models:
     description: Table representing the file structure of a directory under git control
     freshness: null
     columns:
-      - name: id
+      - name: repository_id
         description: System generated unique id for the repository.
         tests:
             - unique
             - not_null
       - name: full_name
         description: The name of the git repository.
-      - name: private
+      - name: is_private
         description: Boolean field indicating whether the repository is private (true) or public (false).
         
   - name: stg_github__requested_reviewer_history
@@ -150,12 +141,12 @@ models:
     description: Table representing contributors to a git project
     freshness: null
     columns:
-      - name: id
+      - name: user_id
         description: System generated unique id for the user.
         tests:
             - unique
             - not_null
-      - name: login
+      - name: login_name
         description: The alias the user uses to login to github.
       - name: name
         description: The name of the user
