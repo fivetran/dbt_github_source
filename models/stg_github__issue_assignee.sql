@@ -16,9 +16,6 @@ with issue_assignee as (
         {{ var('issue_assignee_pass_through_columns') | join (", ")}}
 
         {% endif %}
-        issue_id,
-        user_id,
-        _fivetran_synced
     from issue_assignee
 
 ), fields as (
