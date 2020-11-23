@@ -22,7 +22,7 @@ vars:
 seeds:
   github_source_integration_tests:
     +column_types:
-        _fivetran_synced: timestamp
+      _fivetran_synced: timestamp
     github_issue_assignee_data:
       # +column_types:
       #   _fivetran_synced: timestamp
