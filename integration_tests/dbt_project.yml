@@ -30,8 +30,8 @@ seeds:
       # +column_types:
       #   _fivetran_synced: timestamp
     github_issue_comment_data:
-      # +column_types:
-      #   _fivetran_synced: timestamp
+      +column_types:
+        id: "{%- if target.type == 'bigquery' -%} INT64 {%- else -%} bigint {%- endif -%}"
     github_issue_label_data:
       # +column_types:
       #   _fivetran_synced: timestamp
@@ -42,8 +42,8 @@ seeds:
       # +column_types:
       #   _fivetran_synced: timestamp
     github_pull_request_review_data:
-      # +column_types:
-      #   _fivetran_synced: timestamp
+      +column_types:
+        id: "{%- if target.type == 'bigquery' -%} INT64 {%- else -%} bigint {%- endif -%}"
     github_pull_request_data:
       # +column_types:
       #   _fivetran_synced: timestamp
