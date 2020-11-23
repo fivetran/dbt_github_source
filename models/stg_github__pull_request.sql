@@ -4,6 +4,7 @@ with pull_request as (
     from {{ ref('stg_github__pull_request_tmp') }}
 
 ), macro as (
+    select
             {{
             fivetran_utils.fill_staging_columns(
                 source_columns=adapter.get_columns_in_relation(ref('stg_github__pull_request_tmp')),
