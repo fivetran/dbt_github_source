@@ -22,35 +22,35 @@ vars:
 seeds:
   github_source_integration_tests:
     github_issue_assignee_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
     github_issue_closed_history_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
     github_issue_comment_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
     github_issue_label_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
     github_issue_merged_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
     github_issue_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
     github_pull_request_review_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
     github_pull_request_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
     github_repository_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
     github_requested_reviewer_history_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
     github_user_data:
-      +column_types:
-        _fivetran_synced: timestamp
+      # +column_types:
+      #   _fivetran_synced: timestamp
