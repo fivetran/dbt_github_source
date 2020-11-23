@@ -10,11 +10,11 @@ with issue_assignee as (
                 staging_columns=get_issue_assignee_columns()
             )
         }}
-        {% if var('issue_assignee_pass_through_columns') != [] %}
-        ,
-        {{ var('issue_assignee_pass_through_columns') | join (", ")}}
+        -- {% if var('issue_assignee_pass_through_columns') != [] %}
+        -- ,
+        -- {{ var('issue_assignee_pass_through_columns') | join (", ")}}
 
-        {% endif %}
+        -- {% endif %}
     from issue_assignee
 
 ), fields as (
