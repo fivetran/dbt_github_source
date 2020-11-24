@@ -124,6 +124,8 @@ sources:
         columns:
           - name: id
             description: System generated unique id for the repository.
+          - name: created_at
+            description:  Timestamp of when the repository was created.
           - name: full_name
             description: The name of the git repository.
           - name: private

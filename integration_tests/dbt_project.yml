@@ -20,6 +20,7 @@ vars:
     github_schema: github_source_integration_tests
 
 seeds:
+  +quote_columns: "{{ true if target.type == 'redshift' else false }}"
   github_source_integration_tests:
     +column_types:
       _fivetran_synced: timestamp
@@ -38,6 +39,9 @@ seeds:
       +column_types:
         id: "{%- if target.type == 'bigquery' -%} INT64 {%- else -%} bigint {%- endif -%}"
         submitted_at: timestamp
+    github_repository_data:
+      +column_types:
+        created_at: timestamp
     github_requested_reviewer_history_data:
       +column_types:
         created_at: timestamp
