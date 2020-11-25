@@ -51,14 +51,6 @@ vars:
     issue_label_pass_through_columns: [label_issues_with_this_column, label_maker_column, woohoo_im_a_column_too]
 ```
 
-## Contributions
-
-Additional contributions to this package are very welcome! Please create issues
-or open PRs against `master`. Check out 
-[this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) 
-on the best workflow for contributing to a package.
-
-
 ## Database support
 This package has been tested on BigQuery, Snowflake and Redshift.
 
