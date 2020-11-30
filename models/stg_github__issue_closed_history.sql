@@ -20,7 +20,7 @@ with issue_closed_history as (
         }}
 
         --The below script allows for pass through columns.
-        {% if var('issue_closed_history_pass_through_columns') != [] %}
+        {% if var('issue_closed_history_pass_through_columns') %}
         ,
         {{ var('issue_closed_history_pass_through_columns') | join (", ")}}
 
@@ -33,6 +33,14 @@ with issue_closed_history as (
       issue_id,
       updated_at,
       closed as is_closed
+
+      --The below script allows for pass through columns.
+      {% if var('issue_closed_history_pass_through_columns') %}
+      ,
+      {{ var('issue_closed_history_pass_through_columns') | join (", ")}}
+
+      {% endif %}
+
     from macro
 )
 

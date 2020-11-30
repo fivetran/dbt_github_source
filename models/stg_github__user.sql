@@ -20,7 +20,7 @@ with github_user as (
         }}
 
         --The below script allows for pass through columns.
-        {% if var('user_pass_through_columns') != [] %}
+        {% if var('user_pass_through_columns') %}
         ,
         {{ var('user_pass_through_columns') | join (", ")}}
 
@@ -35,6 +35,14 @@ with github_user as (
       name,
       bio,
       company
+
+      --The below script allows for pass through columns.
+      {% if var('user_pass_through_columns') %}
+      ,
+      {{ var('user_pass_through_columns') | join (", ")}}
+
+      {% endif %}
+
     from macro
 )
 

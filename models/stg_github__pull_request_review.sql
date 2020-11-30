@@ -20,7 +20,7 @@ with pull_request_review as (
         }}
 
         --The below script allows for pass through columns.
-        {% if var('pull_request_review_pass_through_columns') != [] %}
+        {% if var('pull_request_review_pass_through_columns') %}
         ,
         {{ var('pull_request_review_pass_through_columns') | join (", ")}}
 
@@ -35,6 +35,14 @@ with pull_request_review as (
       submitted_at,
       state,
       user_id
+
+      --The below script allows for pass through columns.
+      {% if var('pull_request_review_pass_through_columns') %}
+      ,
+      {{ var('pull_request_review_pass_through_columns') | join (", ")}}
+
+      {% endif %}
+
     from macro
 )
 

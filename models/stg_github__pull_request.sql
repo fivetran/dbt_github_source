@@ -20,7 +20,7 @@ with pull_request as (
         }}
 
         --The below script allows for pass through columns.
-        {% if var('pull_request_pass_through_columns') != [] %}
+        {% if var('pull_request_pass_through_columns') %}
         ,
         {{ var('pull_request_pass_through_columns') | join (", ")}}
 
@@ -34,6 +34,14 @@ with pull_request as (
       issue_id,
       head_repo_id,
       head_user_id
+
+      --The below script allows for pass through columns.
+      {% if var('pull_request_pass_through_columns') %}
+      ,
+      {{ var('pull_request_pass_through_columns') | join (", ")}}
+
+      {% endif %}
+
     from macro
 )
 

@@ -20,7 +20,7 @@ with issue_merged as (
         }}
 
         --The below script allows for pass through columns.
-        {% if var('issue_merged_pass_through_columns') != [] %}
+        {% if var('issue_merged_pass_through_columns') %}
         ,
         {{ var('issue_merged_pass_through_columns') | join (", ")}}
 
@@ -32,6 +32,14 @@ with issue_merged as (
     select 
       issue_id,
       merged_at
+
+      --The below script allows for pass through columns.
+      {% if var('issue_merged_pass_through_columns') %}
+      ,
+      {{ var('issue_merged_pass_through_columns') | join (", ")}}
+
+      {% endif %}
+
     from macro
 )
 

@@ -20,7 +20,7 @@ with issue_assignee as (
         }}
 
         --The below script allows for pass through columns.
-        {% if var('issue_assignee_pass_through_columns') != [] %}
+        {% if var('issue_assignee_pass_through_columns') %}
         ,
         {{ var('issue_assignee_pass_through_columns') | join (", ")}}
 
@@ -32,6 +32,14 @@ with issue_assignee as (
     select 
       issue_id,
       user_id
+
+      --The below script allows for pass through columns.
+      {% if var('issue_assignee_pass_through_columns') %}
+      ,
+      {{ var('issue_assignee_pass_through_columns') | join (", ")}}
+
+      {% endif %}
+
     from macro
 )
 

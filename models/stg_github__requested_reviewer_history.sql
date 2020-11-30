@@ -20,7 +20,7 @@ with requested_reviewer_history as (
         }}
 
         --The below script allows for pass through columns.
-        {% if var('requested_reviewer_history_pass_through_columns') != [] %}
+        {% if var('requested_reviewer_history_pass_through_columns') %}
         ,
         {{ var('requested_reviewer_history_pass_through_columns') | join (", ")}}
 
@@ -34,6 +34,14 @@ with requested_reviewer_history as (
       created_at,
       requested_id,
       removed
+
+      --The below script allows for pass through columns.
+      {% if var('requested_reviewer_history_pass_through_columns') %}
+      ,
+      {{ var('requested_reviewer_history_pass_through_columns') | join (", ")}}
+
+      {% endif %}
+
     from macro
 )
 

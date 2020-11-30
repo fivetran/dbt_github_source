@@ -20,7 +20,7 @@ with issue_comment as (
         }}
 
         --The below script allows for pass through columns.
-        {% if var('issue_comment_pass_through_columns') != [] %}
+        {% if var('issue_comment_pass_through_columns') %}
         ,
         {{ var('issue_comment_pass_through_columns') | join (", ")}}
 
@@ -33,6 +33,14 @@ with issue_comment as (
       id as issue_comment_id,
       issue_id,
       user_id
+
+      --The below script allows for pass through columns.
+      {% if var('issue_comment_pass_through_columns') %}
+      ,
+      {{ var('issue_comment_pass_through_columns') | join (", ")}}
+
+      {% endif %}
+
     from macro
 )
 

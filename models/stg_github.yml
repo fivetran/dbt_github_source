@@ -54,7 +54,7 @@ models:
     columns:
       - name: issue_id
         description: Foreign key that references the issue table.  This table will only refernece issues that are pull requests
-      - name: maerged_at
+      - name: merged_at
         description: Timestamp of when the code merge took place
 
   - name: stg_github__issue
