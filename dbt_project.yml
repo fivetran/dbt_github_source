@@ -1,7 +1,7 @@
 config-version: 2
 
 name: 'github_source'
-version: '0.1.0'
+version: '0.2.0'
 
 require-dbt-version: [">=0.18.0", "<0.19.0"]
 
@@ -24,12 +24,10 @@ vars:
         repository: "{{ source('github', 'repository') }}"
         requested_reviewer_history: "{{ source('github', 'requested_reviewer_history') }}"
         user: "{{ source('github', 'user') }}"
-        issue_assignee_pass_through_columns: []
         issue_closed_history_pass_through_columns: []
         issue_comment_pass_through_columns: []
-        issue_label_pass_through_columns: []
         issue_merged_pass_through_columns: []
-        issue_pass_through_columns: []
+        issue_pass_through_columns: [] 
         pull_request_review_pass_through_columns: []
         pull_request_pass_through_columns: []
         repository_pass_through_columns: []

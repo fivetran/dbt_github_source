@@ -19,12 +19,6 @@ with issue_label as (
             )
         }}
 
-        --The below script allows for pass through columns.
-        {% if var('issue_label_pass_through_columns') %}
-        ,
-        {{ var('issue_label_pass_through_columns') | join (", ")}}
-
-        {% endif %}
     from issue_label
 
 ), fields as (
@@ -32,14 +26,6 @@ with issue_label as (
     select 
       issue_id,
       label
-
-      --The below script allows for pass through columns.
-      {% if var('issue_label_pass_through_columns') %}
-      ,
-      {{ var('issue_label_pass_through_columns') | join (", ")}}
-
-      {% endif %}
-
     from macro
 )
 
