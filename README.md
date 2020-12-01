@@ -1,4 +1,4 @@
-# GitHub 
+# GitHub ([docs](https://dbt-github-source.netlify.app/)) 
 
 This package models GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit).
 
@@ -36,6 +36,27 @@ vars:
     github_schema: your_schema_name 
 ```
 
+This package includes all source columns defined in the `generate_columns.sql` macro. To add additional columns to this package, do so using our pass-through column variables. This is extremely useful if you'd like to include custom fields to the package.
+
+
+```yml
+# dbt_project.yml
+
+...
+vars:
+  github_source:
+    issue_assignee_pass_through_columns: [issue_assignee_custom_field_1, issue_assignee_custom_field_2]
+    issue_closed_history_pass_through_columns: [my_issue_closed_history_custom_field]
+    issue_comment_pass_through_columns: [issues_comment_on_custom_fields_too]
+    issue_label_pass_through_columns: [label_issues_with_this_column, label_maker_column, woohoo_im_a_column_too]
+```
+
+## Database support
+This package has been tested on BigQuery, Snowflake and Redshift.
+
+Coming soon -- compatibility with Spark
+
+
 ## Contributions
 
 Additional contributions to this package are very welcome! Please create issues
@@ -45,7 +66,9 @@ on the best workflow for contributing to a package.
 
 ## Resources:
 - Provide [feedback](https://www.surveymonkey.com/r/DQ7K7WW) on our existing dbt packages or what you'd like to see next
+- Have questions, feedback, or need help? Book a time during our office hours [here](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or email us at solutions@fivetran.com
 - Find all of Fivetran's pre-built dbt packages in our [dbt hub](https://hub.getdbt.com/fivetran/)
+- Learn how to orchestrate dbt transformations with Fivetran [here](https://fivetran.com/docs/transformations/dbt)
 - Learn more about Fivetran [in the Fivetran docs](https://fivetran.com/docs)
 - Check out [Fivetran's blog](https://fivetran.com/blog)
 - Learn more about dbt [in the dbt docs](https://docs.getdbt.com/docs/introduction)

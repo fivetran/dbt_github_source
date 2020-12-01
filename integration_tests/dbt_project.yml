@@ -1,0 +1,47 @@
+name: 'github_source_integration_tests'
+version: '0.1.0'
+config-version: 2
+
+profile: 'integration_tests'
+
+vars:
+  github_source:
+    issue_assignee: "{{ ref('github_issue_assignee_data') }}"
+    issue_closed_history: "{{ ref('github_issue_closed_history_data') }}"
+    issue_comment: "{{ ref('github_issue_comment_data') }}"
+    issue_label: "{{ ref('github_issue_label_data') }}"
+    issue_merged: "{{ ref('github_issue_merged_data') }}"
+    issue: "{{ ref('github_issue_data') }}"
+    pull_request_review: "{{ ref('github_pull_request_review_data') }}"
+    pull_request: "{{ ref('github_pull_request_data') }}"
+    repository: "{{ ref('github_repository_data') }}"
+    requested_reviewer_history: "{{ ref('github_requested_reviewer_history_data') }}"
+    user: "{{ ref('github_user_data') }}"
+    github_schema: github_source_integration_tests
+
+seeds:
+  +quote_columns: "{{ true if target.type == 'redshift' else false }}"
+  github_source_integration_tests:
+    +column_types:
+      _fivetran_synced: timestamp
+    github_issue_comment_data:
+      +column_types:
+        id: "{%- if target.type == 'bigquery' -%} INT64 {%- else -%} bigint {%- endif -%}"
+    github_issue_merged_data:
+      +column_types:
+        merged_at: timestamp
+    github_issue_data:
+      +column_types:
+        closed_at: timestamp
+        created_at: timestamp
+        updated_at: timestamp
+    github_pull_request_review_data:
+      +column_types:
+        id: "{%- if target.type == 'bigquery' -%} INT64 {%- else -%} bigint {%- endif -%}"
+        submitted_at: timestamp
+    github_repository_data:
+      +column_types:
+        created_at: timestamp
+    github_requested_reviewer_history_data:
+      +column_types:
+        created_at: timestamp
