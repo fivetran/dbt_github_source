@@ -49,6 +49,11 @@ vars:
     issue_comment_pass_through_columns: [issue_comment_body, issue_comment_created_at]
     issue_merged_pass_through_columns: [issue_merged_commit_sha, issue_merged_actor_id]
     issue_pass_through_columns: [cool_custom_issue_field, im_an_issue_too]
+    pull_request_review_pass_through_columns: [pull_request_review_body]
+    pull_request_pass_through_columns: [pull_request_base_label, pull_request_head_ref]
+    repository_pass_through_columns: [repository_language, repository_fork, repository_description]
+    requested_reviewer_history_pass_through_columns: [requested_reviewer_history_actor]
+    user_pass_through_columns: [user_hireable, one_more_user_field, im_the_last_user_field]
 
 ```
 
