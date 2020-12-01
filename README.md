@@ -45,10 +45,11 @@ This package includes all source columns defined in the `generate_columns.sql` m
 ...
 vars:
   github_source:
-    issue_assignee_pass_through_columns: [issue_assignee_custom_field_1, issue_assignee_custom_field_2]
     issue_closed_history_pass_through_columns: [my_issue_closed_history_custom_field]
-    issue_comment_pass_through_columns: [issues_comment_on_custom_fields_too]
-    issue_label_pass_through_columns: [label_issues_with_this_column, label_maker_column, woohoo_im_a_column_too]
+    issue_comment_pass_through_columns: [issue_comment_body, issue_comment_created_at]
+    issue_merged_pass_through_columns: [issue_merged_commit_sha, issue_merged_actor_id]
+    issue_pass_through_columns: [cool_custom_issue_field, im_an_issue_too]
+
 ```
 
 ## Database support
