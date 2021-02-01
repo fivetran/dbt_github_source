@@ -1,4 +1,4 @@
-# GitHub ([docs](https://dbt-github-source.netlify.app/)) 
+# GitHub Source
 
 This package models GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit).
 

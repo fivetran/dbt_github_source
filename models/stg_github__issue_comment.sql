@@ -12,19 +12,13 @@ with issue_comment as (
 
         For more information refer to our dbt_fivetran_utils documentation (https://github.com/fivetran/dbt_fivetran_utils.git).
         */
-            {{
+        {{
             fivetran_utils.fill_staging_columns(
                 source_columns=adapter.get_columns_in_relation(ref('stg_github__issue_comment_tmp')),
                 staging_columns=get_issue_comment_columns()
             )
         }}
 
-        --The below script allows for pass through columns.
-        {% if var('issue_comment_pass_through_columns') %}
-        ,
-        {{ var('issue_comment_pass_through_columns') | join (", ")}}
-
-        {% endif %}
     from issue_comment
 
 ), fields as (
@@ -33,13 +27,6 @@ with issue_comment as (
       id as issue_comment_id,
       issue_id,
       user_id
-
-      --The below script allows for pass through columns.
-      {% if var('issue_comment_pass_through_columns') %}
-      ,
-      {{ var('issue_comment_pass_through_columns') | join (", ")}}
-
-      {% endif %}
 
     from macro
 )

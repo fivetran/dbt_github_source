@@ -1,9 +1,13 @@
-with issue_closed_history as (
 
-    select *
-    from {{ ref('stg_github__issue_closed_history_tmp') }}
+with base as (
 
-), macro as (
+    select * 
+    from {{ ref('stg_github__team_tmp') }}
+
+),
+
+fields as (
+
     select
         /*
         The below macro is used to generate the correct SQL for package staging models. It takes a list of columns 
@@ -14,22 +18,24 @@ with issue_closed_history as (
         */
         {{
             fivetran_utils.fill_staging_columns(
-                source_columns=adapter.get_columns_in_relation(ref('stg_github__issue_closed_history_tmp')),
-                staging_columns=get_issue_closed_history_columns()
+                source_columns=adapter.get_columns_in_relation(ref('stg_github__team_tmp')),
+                staging_columns=get_team_columns()
             )
         }}
-
-    from issue_closed_history
-
-), fields as (
-
+        
+    from base
+    
+), final as (
+    
     select 
-      issue_id,
-      updated_at,
-      closed as is_closed
-
-    from macro
+        id as team_id,
+        description,
+        name,
+        parent_id,
+        privacy,
+        slug
+    from fields
 )
 
-select *
-from fields
+select * 
+from final

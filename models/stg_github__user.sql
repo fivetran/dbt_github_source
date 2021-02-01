@@ -18,13 +18,8 @@ with github_user as (
                 staging_columns=get_user_columns()
             )
         }}
-
-        --The below script allows for pass through columns.
-        {% if var('user_pass_through_columns') %}
-        ,
-        {{ var('user_pass_through_columns') | join (", ")}}
-
-        {% endif %}
+        
+        
     from github_user
 
 ), fields as (
@@ -33,15 +28,7 @@ with github_user as (
       id as user_id,
       login as login_name,
       name,
-      bio,
       company
-
-      --The below script allows for pass through columns.
-      {% if var('user_pass_through_columns') %}
-      ,
-      {{ var('user_pass_through_columns') | join (", ")}}
-
-      {% endif %}
 
     from macro
 )

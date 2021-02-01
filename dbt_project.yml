@@ -21,15 +21,8 @@ vars:
         issue: "{{ source('github', 'issue') }}"
         pull_request_review: "{{ source('github', 'pull_request_review') }}"
         pull_request: "{{ source('github', 'pull_request') }}"
+        repo_team: "{{ source('github', 'repo_team') }}"
         repository: "{{ source('github', 'repository') }}"
         requested_reviewer_history: "{{ source('github', 'requested_reviewer_history') }}"
+        team: "{{ source('github', 'team') }}" 
         user: "{{ source('github', 'user') }}"
-        issue_closed_history_pass_through_columns: []
-        issue_comment_pass_through_columns: []
-        issue_merged_pass_through_columns: []
-        issue_pass_through_columns: [] 
-        pull_request_review_pass_through_columns: []
-        pull_request_pass_through_columns: []
-        repository_pass_through_columns: []
-        requested_reviewer_history_pass_through_columns: []
-        user_pass_through_columns: []

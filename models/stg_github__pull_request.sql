@@ -12,19 +12,13 @@ with pull_request as (
 
         For more information refer to our dbt_fivetran_utils documentation (https://github.com/fivetran/dbt_fivetran_utils.git).
         */
-            {{
+        {{
             fivetran_utils.fill_staging_columns(
                 source_columns=adapter.get_columns_in_relation(ref('stg_github__pull_request_tmp')),
                 staging_columns=get_pull_request_columns()
             )
         }}
 
-        --The below script allows for pass through columns.
-        {% if var('pull_request_pass_through_columns') %}
-        ,
-        {{ var('pull_request_pass_through_columns') | join (", ")}}
-
-        {% endif %}
     from pull_request
 
 ), fields as (
@@ -34,13 +28,6 @@ with pull_request as (
       issue_id,
       head_repo_id,
       head_user_id
-
-      --The below script allows for pass through columns.
-      {% if var('pull_request_pass_through_columns') %}
-      ,
-      {{ var('pull_request_pass_through_columns') | join (", ")}}
-
-      {% endif %}
 
     from macro
 )
