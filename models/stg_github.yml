@@ -36,11 +36,12 @@ models:
         description: Foreign key that references the issue table
       - name: label
         description: Text of the label
-        
+         
   - name: stg_github__issue_comment
     description: Table that contains comments made on issues
     columns:
       - name: issue_comment_id
+        description: System generated unique id for the issue comment.
         tests:
           - unique
           - not_null
@@ -69,6 +70,8 @@ models:
         description: The text of the main description of the issue.
       - name: closed_at
         description: Timestamp of when the issue was closed, NULL for issues that are open.
+      - name: is_locked
+        description: Boolean indicating whether the issue is locked.
       - name: created_at
         description: Timestamp of when the issue was created.
       - name: milestone_id
@@ -92,6 +95,7 @@ models:
     description: Table containing reviews made to pull requests
     columns:
       - name: pull_request_review_id
+        description: System generated unique id for the pull request review.
         tests:
           - unique
           - not_null
