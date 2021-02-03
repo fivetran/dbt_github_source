@@ -12,19 +12,13 @@ with requested_reviewer_history as (
 
         For more information refer to our dbt_fivetran_utils documentation (https://github.com/fivetran/dbt_fivetran_utils.git).
         */
-            {{
+        {{
             fivetran_utils.fill_staging_columns(
                 source_columns=adapter.get_columns_in_relation(ref('stg_github__requested_reviewer_history_tmp')),
                 staging_columns=get_requested_reviewer_history_columns()
             )
         }}
 
-        --The below script allows for pass through columns.
-        {% if var('requested_reviewer_history_pass_through_columns') %}
-        ,
-        {{ var('requested_reviewer_history_pass_through_columns') | join (", ")}}
-
-        {% endif %}
     from requested_reviewer_history
 
 ), fields as (
@@ -34,13 +28,6 @@ with requested_reviewer_history as (
       created_at,
       requested_id,
       removed
-
-      --The below script allows for pass through columns.
-      {% if var('requested_reviewer_history_pass_through_columns') %}
-      ,
-      {{ var('requested_reviewer_history_pass_through_columns') | join (", ")}}
-
-      {% endif %}
 
     from macro
 )

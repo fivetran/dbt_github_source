@@ -19,12 +19,6 @@ with repository as (
             )
         }}
 
-        --The below script allows for pass through columns.
-        {% if var('repository_pass_through_columns') %}
-        ,
-        {{ var('repository_pass_through_columns') | join (", ")}}
-
-        {% endif %}
     from repository
 
 ), fields as (
@@ -33,13 +27,6 @@ with repository as (
       id as repository_id,
       full_name,
       private as is_private
-
-      --The below script allows for pass through columns.
-      {% if var('repository_pass_through_columns') %}
-      ,
-      {{ var('repository_pass_through_columns') | join (", ")}}
-
-      {% endif %}
 
     from macro
 )

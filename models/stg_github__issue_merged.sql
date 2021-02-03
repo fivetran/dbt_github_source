@@ -12,19 +12,13 @@ with issue_merged as (
 
         For more information refer to our dbt_fivetran_utils documentation (https://github.com/fivetran/dbt_fivetran_utils.git).
         */
-            {{
+        {{
             fivetran_utils.fill_staging_columns(
                 source_columns=adapter.get_columns_in_relation(ref('stg_github__issue_merged_tmp')),
                 staging_columns=get_issue_merged_columns()
             )
         }}
 
-        --The below script allows for pass through columns.
-        {% if var('issue_merged_pass_through_columns') %}
-        ,
-        {{ var('issue_merged_pass_through_columns') | join (", ")}}
-
-        {% endif %}
     from issue_merged
 
 ), fields as (
@@ -32,13 +26,6 @@ with issue_merged as (
     select 
       issue_id,
       merged_at
-
-      --The below script allows for pass through columns.
-      {% if var('issue_merged_pass_through_columns') %}
-      ,
-      {{ var('issue_merged_pass_through_columns') | join (", ")}}
-
-      {% endif %}
 
     from macro
 )

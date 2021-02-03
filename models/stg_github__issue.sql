@@ -19,12 +19,6 @@ with issue as (
             )
         }}
 
-        --The below script allows for pass through columns.
-        {% if var('issue_pass_through_columns') %}
-        ,
-        {{ var('issue_pass_through_columns') | join (", ")}}
-
-        {% endif %}
     from issue 
 
 ), fields as (
@@ -43,13 +37,6 @@ with issue as (
       title,
       updated_at,
       user_id
-
-      --The below script allows for pass through columns.
-      {% if var('issue_pass_through_columns') %}
-      ,
-      {{ var('issue_pass_through_columns') | join (", ")}}
-
-      {% endif %}
       
     from macro
 )
