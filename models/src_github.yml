@@ -182,5 +182,3 @@ sources:
             description: The name of the user
           - name: company
             description: The  company of the user.
-          - name: bio
-            description: The new short biography of the user
