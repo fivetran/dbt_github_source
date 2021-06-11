@@ -122,6 +122,8 @@ sources:
 
       - name: repo_team
         description: Table representing the mapping relationships between repositiories and teams
+        meta:
+          is_enabled: "{{ var('github__using_repo_team', true) }}"
         columns:
           - name: repository_id
             description: Reference to the respective repository for the record.
