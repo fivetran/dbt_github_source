@@ -1,28 +1,28 @@
 config-version: 2
 
 name: 'github_source'
-version: '0.3.0'
+version: '0.4.0'
 
-require-dbt-version: ">=0.20.0"
+require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
-    github_source:
-        materialized: table
-        tmp:
-            materialized: view
+  github_source:
+    materialized: table
+    tmp:
+      materialized: view
 
 vars:
-    github_source:
-        issue_assignee:                 "{{ source('github', 'issue_assignee') }}"
-        issue_closed_history:           "{{ source('github', 'issue_closed_history') }}"
-        issue_comment:                  "{{ source('github', 'issue_comment') }}"
-        issue_label:                    "{{ source('github', 'issue_label') }}"
-        issue_merged:                   "{{ source('github', 'issue_merged') }}"
-        issue:                          "{{ source('github', 'issue') }}"
-        pull_request_review:            "{{ source('github', 'pull_request_review') }}"
-        pull_request:                   "{{ source('github', 'pull_request') }}"
-        repo_team:                      "{{ source('github', 'repo_team') }}"
-        repository:                     "{{ source('github', 'repository') }}"
-        requested_reviewer_history:     "{{ source('github', 'requested_reviewer_history') }}"
-        team:                           "{{ source('github', 'team') }}" 
-        user:                           "{{ source('github', 'user') }}"
+  github_source:
+    issue_assignee: "{{ source('github', 'issue_assignee') }}"
+    issue_closed_history: "{{ source('github', 'issue_closed_history') }}"
+    issue_comment: "{{ source('github', 'issue_comment') }}"
+    issue_label: "{{ source('github', 'issue_label') }}"
+    issue_merged: "{{ source('github', 'issue_merged') }}"
+    issue: "{{ source('github', 'issue') }}"
+    pull_request_review: "{{ source('github', 'pull_request_review') }}"
+    pull_request: "{{ source('github', 'pull_request') }}"
+    repo_team: "{{ source('github', 'repo_team') }}"
+    repository: "{{ source('github', 'repository') }}"
+    requested_reviewer_history: "{{ source('github', 'requested_reviewer_history') }}"
+    team: "{{ source('github', 'team') }}"
+    user: "{{ source('github', 'user') }}"
