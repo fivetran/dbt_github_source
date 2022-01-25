@@ -1,3 +1,8 @@
+# dbt_github_source v0.4.1
+
+## Fixes
+- Added the `{{ dbt_utils.type_timestamp() }}` cast function to timestamp fields within the staging models. This is required for Redshift users that have the fields originally synced as `timestamptz`. Without the casting of fields the downstream date functions will fail. ([#19](https://github.com/fivetran/dbt_github_source/pull/19))
+
 # dbt_github_source v0.4.0
 🎉 dbt v1.0.0 Compatibility 🎉
 ## 🚨 Breaking Changes 🚨
