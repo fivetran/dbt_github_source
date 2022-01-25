@@ -25,7 +25,7 @@ with issue_closed_history as (
 
     select 
       issue_id,
-      updated_at,
+      cast(updated_at as {{ dbt_utils.type_timestamp() }}) as updated_at,
       closed as is_closed
 
     from macro
