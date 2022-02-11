@@ -10,6 +10,7 @@ vars:
     issue_closed_history:         "{{ ref('github_issue_closed_history_data') }}"
     issue_comment:                "{{ ref('github_issue_comment_data') }}"
     issue_label:                  "{{ ref('github_issue_label_data') }}"
+    label:                        "{{ ref('github_label_data') }}"
     issue_merged:                 "{{ ref('github_issue_merged_data') }}"
     issue:                        "{{ ref('github_issue_data') }}"
     pull_request_review:          "{{ ref('github_pull_request_review_data') }}"
