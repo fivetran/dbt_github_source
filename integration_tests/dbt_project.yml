@@ -33,6 +33,13 @@ seeds:
     github_issue_merged_data:
       +column_types:
         merged_at: timestamp
+    github_issue_label_data:
+      +column_types:
+        issue_id: "{%- if target.type == 'bigquery' -%} INT64 {%- else -%} bigint {%- endif -%}"
+        label_id: "{%- if target.type == 'bigquery' -%} INT64 {%- else -%} bigint {%- endif -%}"
+    github_label_data:
+      +column_types:
+        id: "{%- if target.type == 'bigquery' -%} INT64 {%- else -%} bigint {%- endif -%}"
     github_issue_data:
       +column_types:
         closed_at: timestamp
