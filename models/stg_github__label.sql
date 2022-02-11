@@ -1,7 +1,7 @@
 with issue_label as (
 
     select *
-    from {{ ref('stg_github__issue_label_tmp') }}
+    from {{ ref('stg_github__label_tmp') }}
 
 ), macro as (
     select
@@ -14,8 +14,8 @@ with issue_label as (
         */
             {{
             fivetran_utils.fill_staging_columns(
-                source_columns=adapter.get_columns_in_relation(ref('stg_github__issue_label_tmp')),
-                staging_columns=get_issue_label_columns()
+                source_columns=adapter.get_columns_in_relation(ref('stg_github__label_tmp')),
+                staging_columns=get_label_columns()
             )
         }}
 
@@ -24,8 +24,13 @@ with issue_label as (
 ), fields as (
 
     select 
-      issue_id,
-      label_id
+        id as label_id,
+        _fivetran_synced,	
+        color,
+        description,
+        is_default,
+        name,
+        url
     from macro
 )
 

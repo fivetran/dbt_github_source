@@ -1,7 +1,7 @@
 config-version: 2
 
 name: 'github_source'
-version: '0.4.1'
+version: '0.5.0'
 
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
@@ -17,6 +17,7 @@ vars:
     issue_closed_history: "{{ source('github', 'issue_closed_history') }}"
     issue_comment: "{{ source('github', 'issue_comment') }}"
     issue_label: "{{ source('github', 'issue_label') }}"
+    label: "{{ source('github', 'label') }}"
     issue_merged: "{{ source('github', 'issue_merged') }}"
     issue: "{{ source('github', 'issue') }}"
     pull_request_review: "{{ source('github', 'pull_request_review') }}"

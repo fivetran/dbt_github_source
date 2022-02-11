@@ -1,3 +1,7 @@
+# dbt_github_source v0.5.0
+
+## Fixes
+- Addition of the `label` source table. This was necessary as the `issue_label` depreciated the `label` column. The respective label information will now be synced within the `label` table. 
 # dbt_github_source v0.4.1
 
 ## Fixes
