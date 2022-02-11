@@ -30,7 +30,7 @@ models:
         description: The description of the label indicating the purpose
       - name: is_default
         description: Boolean flagging if the label is default on creation
-      - name: name
+      - name: label
         description: Name of the label
       - name: url
         description: Url where the label was used

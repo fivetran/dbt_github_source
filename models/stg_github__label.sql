@@ -29,7 +29,7 @@ with issue_label as (
         color,
         description,
         is_default,
-        name,
+        name as label,
         url
     from macro
 )
