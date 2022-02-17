@@ -21,6 +21,25 @@ sources:
           - name: user_id
             description: Foreign key that references the user table
 
+      - name: label
+        description: Table that contains labels that are used across your Github account within individual repositories.
+        freshness: null
+        columns:
+          - name: id
+            description: Unique identifier of the Github label
+          - name: _fivetran_synced
+            description: Timestamp of the record being synced by Fivetran
+          - name: color
+            description: The color of the label
+          - name: description
+            description: The description of the label indicating the purpose
+          - name: is_default
+            description: Boolean flagging if the label is default on creation
+          - name: name
+            description: Name of the label
+          - name: url
+            description: Url where the label was used
+
       - name: issue_closed_history
         loaded_at_field: _fivetran_synced
         description: Table to track when an issue is closed or re-opened
@@ -38,9 +57,9 @@ sources:
         columns:
           - name: issue_id
             description: Foreign key that references the issue table
-          - name: label
-            description: Text of the label
-            
+          - name: label_id
+            description: Unique identifier of the used label
+
       - name: issue_comment
         loaded_at_field: _fivetran_synced
         description: Table that contains comments made on issues
@@ -57,8 +76,8 @@ sources:
         description: Table that tracks when an issue (always a pull request) is merged
         columns:
           - name: issue_id
-            description: Foreign key that references the issue table.  This table will only refernece issues that are pull requests
-          - name: maerged_at
+            description: Foreign key that references the issue table.  This table will only reference issues that are pull requests
+          - name: merged_at
             description: Timestamp of when the code merge took place
 
       - name: issue
@@ -121,7 +140,7 @@ sources:
             description: Foreign key that references the user table, referencing who created the current branch.
 
       - name: repo_team
-        description: Table representing the mapping relationships between repositiories and teams
+        description: Table representing the mapping relationships between repositories and teams
         meta:
           is_enabled: "{{ var('github__using_repo_team', true) }}"
         columns:

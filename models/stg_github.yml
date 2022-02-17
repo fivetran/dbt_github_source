@@ -14,6 +14,27 @@ models:
       - name: user_id
         description: Foreign key that references the user table
 
+  - name: stg_github__label
+    description: Table that contains labels that are used across your Github account within individual repositories.
+    columns:
+      - name: label_id
+        description: Unique identifier of the Github label
+        tests: 
+          - not_null
+          - unique
+      - name: _fivetran_synced
+        description: Timestamp of the record being synced by Fivetran
+      - name: color
+        description: The color of the label
+      - name: description
+        description: The description of the label indicating the purpose
+      - name: is_default
+        description: Boolean flagging if the label is default on creation
+      - name: label
+        description: Name of the label
+      - name: url
+        description: Url where the label was used
+
   - name: stg_github__issue_closed_history
     description: Table to track when an issue is closed or re-opened
     tests:
@@ -34,9 +55,9 @@ models:
     columns:
       - name: issue_id
         description: Foreign key that references the issue table
-      - name: label
-        description: Text of the label
-         
+      - name: label_id
+        description: Unique identifier of the used label
+
   - name: stg_github__issue_comment
     description: Table that contains comments made on issues
     columns:
@@ -54,7 +75,7 @@ models:
     description: Table that tracks when an issue (always a pull request) is merged
     columns:
       - name: issue_id
-        description: Foreign key that references the issue table.  This table will only refernece issues that are pull requests
+        description: Foreign key that references the issue table.  This table will only reference issues that are pull requests
       - name: merged_at
         description: Timestamp of when the code merge took place
 
@@ -124,7 +145,7 @@ models:
         description: Foreign key that references the user table, referencing who created the current branch.
 
   - name: stg_github__repo_team
-    description: Table representing the mapping relationships between repositiories and teams
+    description: Table representing the mapping relationships between repositories and teams
     columns:
       - name: repository_id
         description: Reference to the respective repository for the record.
@@ -137,7 +158,6 @@ models:
         
   - name: stg_github__repository
     description: Table representing the file structure of a directory under git control
-    freshness: null
     columns:
       - name: repository_id
         description: System generated unique id for the repository.
@@ -182,7 +202,6 @@ models:
 
   - name: stg_github__user
     description: Table representing contributors to a git project
-    freshness: null
     columns:
       - name: user_id
         description: System generated unique id for the user.
