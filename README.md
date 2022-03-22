@@ -65,8 +65,6 @@ vars:
     github_database: your_database_name
     github_schema: your_schema_name 
 ```
-
-
 ### Disabling Model Variables
 Your Github connector might not sync every table that this package expects. If your syncs exclude certain tables, it is because you either don't use that functionality in Github or have actively excluded some tables from your syncs.
 
@@ -111,7 +109,7 @@ packages:
     version: [">=0.8.0", "<0.9.0"]
 ```
 > If you have any of these dependent packages in your own `packages.yml ` I highly recommend you remove them to ensure there are no package version conflicts.
-# Contributions and Maintenance
+# 🙌 Contributions and Maintenance
 ## Package Maintenance
 The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github_source/latest/) of the package and refer to the [CHANGELOG](/CHANGELOG.md) and release notes for more information on changes across versions.
 
@@ -119,5 +117,5 @@ The Fivetran team maintaining this package **only** maintains the latest version
 These dbt packages are developed by a small team of analytics engineers at Fivetran. However, the packages are made better by community contributions! We highly encourage and welcome contributions to this package. Please create issues if you have any questions, or feel free to fork the repo to apply your changes and open a PR against `main` if you would like to directly contribute. Check out 
 [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package.
 
-# Resources
+# 🏪 Resources
 - If you encounter any questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_github_source/issues/new/choose) section to find the right avenue of support for you.
