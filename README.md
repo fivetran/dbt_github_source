@@ -3,7 +3,9 @@
 
 # GitHub Source dbt Package
 # 📣 What does this dbt package do?
-This package cleans, tests, and preps GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit). For more details around what the source package does, I recommend you checkout our [Fivetran Source Data Model Docs](tbd). This package will materialize the following staging models in your warehouse:
+This package cleans, tests, and preps GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit). For more details around what the source package does, I recommend you checkout our [Fivetran Source Data Model Docs](tbd). 
+
+This package will materialize the following staging models in your warehouse:
 
 | **Fivetran Source Table**                  | **Materialized Staging Model**   | **Description** |
 | -------------------------- | ------------------------------------------------------------------------------ | -------------|
