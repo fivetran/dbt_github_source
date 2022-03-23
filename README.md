@@ -116,8 +116,9 @@ packages:
 The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github_source/latest/) of the package and refer to the [CHANGELOG](/CHANGELOG.md) and release notes for more information on changes across versions.
 
 ## Contributions
-These dbt packages are developed by a small team of analytics engineers at Fivetran. However, the packages are made better by community contributions! We highly encourage and welcome contributions to this package. Please create issues if you have any questions, or feel free to fork the repo to apply your changes and open a PR against `main` if you would like to directly contribute. Check out 
-[this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package.
+These dbt packages are developed by a small team of analytics engineers at Fivetran. However, the packages are made better by community contributions! 
+
+We highly encourage and welcome contributions to this package. Please refer to the [CONTRIBUTING.md](/CONTRIBUTING.md) doc for details on how to effectively contribute to this open source project!
 
 # 🏪 Resources
-- If you encounter any questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_github_source/issues/new/choose) section to find the right avenue of support for you.
+If you encounter any questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_github_source/issues/new/choose) section to find the right avenue of support for you.
