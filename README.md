@@ -77,7 +77,7 @@ Your dbt project is now setup to successfully run the dbt package models! You ca
 ## (Optional) Step 6: Orchestrate your package models with Fivetran
 Fivetran offers the ability for you to orchestrate your dbt project through the [Fivetran Transformations for dbt Core](https://fivetran.com/docs/transformations/dbt) product. Refer to the linked docs for more information on how to setup your project for orchestration through Fivetran. 
 
-# Package Dependency Matrix
+# 🔍 Package Dependency Matrix
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**
 ```
