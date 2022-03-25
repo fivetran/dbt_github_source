@@ -33,70 +33,46 @@ This package will materialize the following staging models in your warehouse:
 To effectively install this package and leverage the pre-made models, you will follow the below steps:
 ## Step 1: Requirements 
 You will need to ensure you have the following requirements before leveraging the dbt package.
-### Connector
-Have the Fivetran GitHub connector syncing data into your warehouse. 
-  - Ensure all the source tables listed [above]() are being synced.
-### Database support
-This package has been tested on BigQuery, Snowflake and Redshift. Ensure you are using one of these supported databases.
-
-### dbt Version
-This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
-
+- **Connector**: Have the Fivetran GitHub connector syncing data into your warehouse. 
+- **Database support**: This package has been tested on BigQuery, Snowflake and Redshift. Ensure you are using one of these supported databases.
+- **dbt Version**: This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
 ## Step 2: Installing the Package
 Include the following github_source package version in your `packages.yml`
-
+> Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yaml
 packages:
   - package: fivetran/github_source
     version: [">=0.5.0", "<0.6.0"]
 ```
-> Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
-
 ## Step 3: Configure Your Variables
 ### Database and Schema Variables
 By default, this package will run using your target database and the `github` schema. If this is not where your GitHub data is (perhaps your gitHub schema is `github_fivetran`), add the following configuration to your `dbt_project.yml` file:
 
 ```yml
-# dbt_project.yml
-
-...
-config-version: 2
-
 vars:
   github_source:
     github_database: your_database_name
     github_schema: your_schema_name 
 ```
 ### Disabling Model Variables
-Your Github connector might not sync every table that this package expects. If your syncs exclude certain tables, it is because you either don't use that functionality in Github or have actively excluded some tables from your syncs.
-
-If you do not have the `REPO_TEAM` table synced, add the following variable to your `dbt_project.yml` file:
+Your Github connector might not sync every table that this package expects. If you do not have the `REPO_TEAM` table synced, add the following variable to your `dbt_project.yml` file:
 
 ```yml
-# dbt_project.yml
-config-version: 2
-
 vars:
-    github__using_repo_team: false # by default this is assumed to be true
+  github__using_repo_team: false # by default this is assumed to be true
 ```
-
-*Note: This package only integrates the above variable. If you'd like to disable other models, please create an [issue](https://github.com/fivetran/dbt_github_source/issues) specifying which ones.*
-
 ## (Optional) Step 4: Additional Configurations
 ### Change the Build Schema
 By default, this package builds the GitHub staging models within a schema titled (<target_schema> + `_stg_github`) in your target database. If this is not where you would like your GitHub staging data to be written to, add the following configuration to your `dbt_project.yml` file:
 
 ```yml
-# dbt_project.yml
-
-...
 models:
     github_source:
       +schema: my_new_schema_name # leave blank for just the target_schema
 ```
 
 ## Step 5: Finish Setup
-Your dbt project is now setup to successfully run the dbt package models! You can now execute `dbt run` and `dbt test` to see the models materialize in your warehouse and execute the data integrity tests applied within the package.
+Your dbt project is now setup to successfully run the dbt package models! You can now execute `dbt run` and `dbt test` to have the models materialize in your warehouse and execute the data integrity tests applied within the package.
 
 ## (Optional) Step 6: Orchestrate your package models with Fivetran
 Fivetran offers the ability for you to orchestrate your dbt project through the [Fivetran Transformations for dbt Core](https://fivetran.com/docs/transformations/dbt) product. Refer to the linked docs for more information on how to setup your project for orchestration through Fivetran. 
