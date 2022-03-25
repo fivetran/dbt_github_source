@@ -3,7 +3,7 @@
 
 # GitHub Source dbt Package
 # 📣 What does this dbt package do?
-This package cleans, tests, and preps GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit). For more details around what the source package does, I recommend you checkout our [Fivetran Source Data Model Docs](tbd). 
+This package cleans, tests, and preps GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit). More details can be found in the [Fivetran Source Data Model Docs](tbd).
 
 This package will materialize the following staging models in your warehouse:
 
@@ -25,22 +25,22 @@ This package will materialize the following staging models in your warehouse:
 |user|[stg_github__user](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__user)|Table representing contributors to a git project. |
 
 # 🤔 Who is the target user of this dbt package?
-This package is intended to be leveraged by **all** Fivetran customers who are leveraging the GitHub connector and dbt. This package is great for gaining a better understanding of the source data in your warehouse, testing the data for integrity, and lightly enriching and staging the data for further transformations in downstream models. The models within this package are easily referenced in your own data models and are intended to be part of your data transformation workflow. Think of this as a staging layer that you don't need to maintain!
-
-Further, if you want to leverage pre-made data models that apply additional transformations on top of this package and create analytics ready models then I highly recommend you install our [GitHub Modeling dbt Package](https://github.com/fivetran/dbt_github)!
-
+- You use Fivetran's [GitHub connector](https://fivetran.com/docs/applications/GitHub)
+- You use dbt
+- You want a staging layer that cleans, tests, and prepares your GitHub data
+- (Optional) You want to make use of the [GitHub Modeling dbt Package](https://github.com/fivetran/dbt_github)
 # 🎯 How do I use the dbt package?
-To effectively install this package and leverage the pre-made models, you will want to follow the below steps:
+To effectively install this package and leverage the pre-made models, you will follow the below steps:
 ## Step 1: Requirements 
+You will need to ensure you have the following requirements before leveraging the dbt package.
 ### Connector
 Have the Fivetran GitHub connector syncing data into your warehouse. 
-  - Ensure all the source tables listed [above]() are being synced. FYI the tables necessary for use in this package should be synced by default.
+  - Ensure all the source tables listed [above]() are being synced.
 ### Database support
 This package has been tested on BigQuery, Snowflake and Redshift. Ensure you are using one of these supported databases.
 
 ### dbt Version
 This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
-  - If you do not have dbt installed, I recommend you refer to the [dbt setup guide]() for details on how to get your first dbt project set up.
 
 ## Step 2: Installing the Package
 Include the following github_source package version in your `packages.yml`
@@ -54,7 +54,7 @@ packages:
 
 ## Step 3: Configure Your Variables
 ### Database and Schema Variables
-By default, this package will run using your target database and the `github` schema. If this is not where your GitHub data is (perhaps your gitHub schema is `Github_fivetran`), add the following configuration to your `dbt_project.yml` file:
+By default, this package will run using your target database and the `github` schema. If this is not where your GitHub data is (perhaps your gitHub schema is `github_fivetran`), add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
