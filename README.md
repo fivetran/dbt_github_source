@@ -1,40 +1,35 @@
-[![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
-![dbt-core](https://img.shields.io/badge/dbt_core-version_>=1.0.0_<2.0.0-orange.svg)
+<p align="center">
+    <a alt="License"
+        href="https://github.com/fivetran/dbt_github_source/blob/main/LICENSE">
+        <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
+    <a alt="Fivetran-Release"
+        href="https://fivetran.com/docs/getting-started/core-concepts#releasephases">
+        <img src="https://img.shields.io/badge/Fivetran Release Phase-_Beta-orange.svg" /></a>
+    <a alt="dbt-core">
+        <img src="https://img.shields.io/badge/dbt_core-version_>=1.0.0_<2.0.0-orange.svg" /></a>
+    <a alt="Maintained?">
+        <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
+    <a alt="PRs">
+        <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
+</p>
 
 # GitHub Source dbt Package
 # 📣 What does this dbt package do?
-This package cleans, tests, and preps GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit). More details can be found in the [Fivetran Source Data Model Docs](tbd).
+This package cleans, tests, and prepares GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub) for analysis. It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit) and is intended to work simultaneously with our [GitHub modeling package](https://github.com/fivetran/dbt_github). More details can be found in the [Fivetran Source Data Model Docs](tbd).
 
-This package will materialize the following staging models in your warehouse:
-
-| **Fivetran Source Table**                  | **Materialized Staging Model**   | **Description** |
-| -------------------------- | ------------------------------------------------------------------------------ | -------------|
-| issue_assignee | [stg_github__issue_assignee](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__issue_assignee)   | Table with the current user(s) assigned to an issue  |
-|issue_closed_history|[stg_github__issue_closed_history](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__issue_closed_history)|Table to track when an issue is closed or re-opened |
-|issue_comment|[stg_github__issue_comment](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__issue_comment)|Table that contains comments made on issues |
-|issue_label|[stg_github__issue_label](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__issue_label)|The current labels attached to an issue |
-|issue_merged|[stg_github__issue_merged](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__issue_merged)|Table that tracks when an issue (always a pull request) is merged. |
-|issue|[stg_github__issue](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__issue)|Table that contains 1 entry for every issue created. Pull Requests also create an entry in this table, and there is a boolean field to determine if an entry is a pull request. |
-|label|[stg_github__label](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__label)|Table that contains labels that are used across your Github account within individual repositories. |
-|pull_request_review|[stg_github__pull_request_review](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__pull_request_review)|Table containing reviews made to pull requests. |
-|pull_request|[stg_github__pull_request](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__pull_request)|A special type of issue that is created when a user wants to merge one branch of code into another. |
-|repo_team|[stg_github__repo_team](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__repo_team)|Table representing the mapping relationships between repositories and teams. |
-|repository|[stg_github__repository](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__repository)|Table representing the file structure of a directory under git control. |
-|requested_reviewer_history|[stg_github__requested_reviewer_history](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__requested_reviewer_history)|Table containing when a user requests another user to review a pull request. |
-|team|[stg_github__team](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__team)|Table containing teams and team details. |
-|user|[stg_github__user](https://fivetran.github.io/dbt_github_source/#!/model/model.github_source.stg_github__user)|Table representing contributors to a git project. |
+Refer to our [Docs site](https://fivetran.github.io/dbt_github_source/#!/overview?g_v=1) for more details about these models. 
 
 # 🤔 Who is the target user of this dbt package?
 - You use Fivetran's [GitHub connector](https://fivetran.com/docs/applications/GitHub)
 - You use dbt
-- You want a staging layer that cleans, tests, and prepares your GitHub data
+- You want a staging layer that cleans, tests, and prepares your GitHub data for analysis
 - (Optional) You want to make use of the [GitHub Modeling dbt Package](https://github.com/fivetran/dbt_github)
 # 🎯 How do I use the dbt package?
 To effectively install this package and leverage the pre-made models, you will follow the below steps:
-## Step 1: Requirements 
-You will need to ensure you have the following requirements before leveraging the dbt package.
+## Step 1: Pre-Requisites
+You will need to ensure you have the following before leveraging the dbt package.
 - **Connector**: Have the Fivetran GitHub connector syncing data into your warehouse. 
-- **Database support**: This package has been tested on BigQuery, Snowflake and Redshift. Ensure you are using one of these supported databases.
+- **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, and **Postgres**. Ensure you are using one of these supported databases.
 - **dbt Version**: This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
 ## Step 2: Installing the Package
 Include the following github_source package version in your `packages.yml`
@@ -50,11 +45,10 @@ By default, this package will run using your target database and the `github` sc
 
 ```yml
 vars:
-  github_source:
-    github_database: your_database_name
-    github_schema: your_schema_name 
+  github_database: your_database_name
+  github_schema: your_schema_name 
 ```
-### Disabling Model Variables
+### Disabling Components
 Your Github connector might not sync every table that this package expects. If you do not have the `REPO_TEAM` table synced, add the following variable to your `dbt_project.yml` file:
 
 ```yml
@@ -77,25 +71,27 @@ Your dbt project is now setup to successfully run the dbt package models! You ca
 ## (Optional) Step 6: Orchestrate your package models with Fivetran
 Fivetran offers the ability for you to orchestrate your dbt project through the [Fivetran Transformations for dbt Core](https://fivetran.com/docs/transformations/dbt) product. Refer to the linked docs for more information on how to setup your project for orchestration through Fivetran. 
 
-# 🔍 Package Dependency Matrix
+# 🔍 Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**
-```
+```yml
 packages:
-  - package: fivetran/fivetran_utils
-    version: [">=0.3.0", "<0.4.0"]
-  - package: dbt-labs/dbt_utils
-    version: [">=0.8.0", "<0.9.0"]
+    - package: fivetran/fivetran_utils
+      version: [">=0.3.0", "<0.4.0"]
+
+    - package: dbt-labs/dbt_utils
+      version: [">=0.8.0", "<0.9.0"]
 ```
-# 🙌 Contributions and Maintenance
+# 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance
-The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github_source/latest/) of the package and refer to the [CHANGELOG](/CHANGELOG.md) and release notes for more information on changes across versions.
+The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github_source/latest/) of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_github_source/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
 
 ## Contributions
 These dbt packages are developed by a small team of analytics engineers at Fivetran. However, the packages are made better by community contributions! 
 
-We highly encourage and welcome contributions to this package. Please refer to the [CONTRIBUTING.md](/CONTRIBUTING.md) doc for details on how to effectively contribute to this open source project!
+We highly encourage and welcome contributions to this package. Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package!
 
-# 🏪 Resources and Feedback
+# 🏪 Are there any resources available?
 - If you encounter any questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_github_source/issues/new/choose) section to find the right avenue of support for you.
 - If you would like to provide feedback to the dbt package team at Fivetran, or would like to request a future dbt package to be developed, then feel free to fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).
+- Have questions or want to just say hi? Book a time during our office hours [here](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or send us an email at solutions@fivetran.com.
