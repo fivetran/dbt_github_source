@@ -13,7 +13,7 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# GitHub Source dbt Package
+# GitHub Source dbt Package ([Docs](https://fivetran.github.io/dbt_github_source/))
 # 📣 What does this dbt package do?
 This package cleans, tests, and prepares GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/GitHub) for analysis. It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/edit) and is intended to work simultaneously with our [GitHub modeling package](https://github.com/fivetran/dbt_github). More details can be found in the [Fivetran Source Data Model Docs](tbd).
 
