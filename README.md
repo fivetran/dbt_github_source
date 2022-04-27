@@ -16,9 +16,9 @@
 # GitHub Source dbt Package ([Docs](https://fivetran.github.io/dbt_github_source/))
 # 📣 What does this dbt package do?
 - Cleans, tests, and prepares your GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/github) for analysis.
-- Generates a comprehensive data dictionary of your Jira data via the [dbt docs site](https://fivetran.github.io/dbt_github_source/)
+- Generates a comprehensive data dictionary of your GitHub data via the [dbt docs site](https://fivetran.github.io/dbt_github_source/)
 - Materializes staging tables which leverage data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/) and is intended to work simultaneously with our [GitHub modeling package](https://github.com/fivetran/dbt_github)
-    - Refer to our [Docs site](https://fivetran.github.io/dbt_jira_source/#!/overview/github_source/models/?g_v=1) for more details about these materialized models. 
+    - Refer to our [Docs site](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1) for more details about these materialized models. 
 
 # 🤔 Who is the target user of this dbt package?
 - You use Fivetran's [GitHub connector](https://fivetran.com/docs/applications/GitHub)
