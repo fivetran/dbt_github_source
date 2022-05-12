@@ -16,44 +16,48 @@
 # GitHub Source dbt Package ([Docs](https://fivetran.github.io/dbt_github_source/))
 # 📣 What does this dbt package do?
 - Cleans, tests, and prepares your GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/github) for analysis.
-- Generates a comprehensive data dictionary of your GitHub data via the [dbt docs site](https://fivetran.github.io/dbt_github_source/)
-- Materializes staging tables which leverage data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/) and is intended to work simultaneously with our [GitHub modeling package](https://github.com/fivetran/dbt_github)
-    - Refer to our [Docs site](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1) for more details about these materialized models. 
+- Generates a comprehensive data dictionary of your GitHub data through the [dbt docs site](https://fivetran.github.io/dbt_github_source/).
+- Materializes staging tables which leverage data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/). These tables are designed to work simultaneously with our [GitHub modeling package](https://github.com/fivetran/dbt_github). Learn more about these models on the [dbt docs site](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1). 
 
 # 🎯 How do I use the dbt package?
-To effectively install this package and leverage the pre-made models, you will follow the below steps:
-## Step 1: Pre-Requisites
-You will need to ensure you have the following before leveraging the dbt package.
-- **Connector**: Have the Fivetran GitHub connector syncing data into your warehouse. 
-- **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, and **Postgres**. Ensure you are using one of these supported databases.
-## Step 2: Installing the Package
-Include the following github_source package version in your `packages.yml`
-> Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
+## Step 1: Prerequisites
+To use this dbt package, you must have the following:
+- At least one Fivetran GitHub connector syncing data into your destination.
+- A **BigQuery**, **Snowflake**, **Redshift**, and **PostgreSQL** destination.
+
+## Step 2: Install the Package
+
+Include the following github_source package version in your `packages.yml` file:
+> TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
+
 ```yaml
 packages:
   - package: fivetran/github_source
     version: [">=0.5.0", "<0.6.0"]
 ```
-## Step 3: Define Database and Schema Variables
-By default, this package will run using your target database and the `github` schema. If this is not where your GitHub data is (perhaps your gitHub schema is `github_fivetran`), add the following configuration to your `dbt_project.yml` file:
+## Step 3: Define database and schema variables
+
+By default, this package runs using your destination and the `github` schema. If this is not where your GitHub data is (for example, if your GitHub schema is `github_fivetran`), add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 vars:
-  github_database: your_database_name
+  github_database: your_destination_name
   github_schema: your_schema_name 
 ```
-## Step 4: Disable Models for Non Existent Sources
-Your Github connector might not sync every table that this package expects. If you do not have the `REPO_TEAM` table synced, add the following variable to your `dbt_project.yml` file:
+## Step 4: Disable models for non-existent sources
+Your Github connector may not sync every table that this package expects. If you do not have the `REPO_TEAM` table synced, add the following variable to your `dbt_project.yml` file:
 
 ```yml
 vars:
   github__using_repo_team: false # by default this is assumed to be true
 ```
-## (Optional) Step 5: Additional Configurations
+
+## (Optional) Step 5: Additional configurations
 <details><summary>Expand for configurations</summary>
     
-### Change the Build Schema
-By default, this package builds the GitHub staging models within a schema titled (<target_schema> + `_stg_github`) in your target database. If this is not where you would like your GitHub staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
+### Change the build schema
+
+By default, this package builds the GitHub staging models within a schema titled (`<target_schema>` + `_stg_github`) in your target database. If this is not where you would like your GitHub staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:
@@ -61,8 +65,12 @@ models:
       +schema: my_new_schema_name # leave blank for just the target_schema
 ```
     
-### Change the Source Table References
-If an individual source table has a different name than expected (see this projects [dbt_project.yml](https://github.com/fivetran/dbt_github_source/blob/main/dbt_project.yml) variable declarations for expected names), provide the name of the table as it appears in your warehouse to the respecitve variable as identified below:
+### Change the source table references
+
+If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
+> IMPORTANT: See this project's [dbt_project.yml](https://github.com/fivetran/dbt_github_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
+
+
 ```yml
 vars:
     github_<default_source_table_name>_identifier: your_table_name 
@@ -73,12 +81,12 @@ vars:
 <details><summary>Expand for details</summary>
 <br>
     
-Fivetran offers the ability for you to orchestrate your dbt project through [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt). Refer to the linked docs for more information on how to setup your project for orchestration through Fivetran. 
+Fivetran offers the ability for you to orchestrate your dbt project through [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt). Learn how to set up your project for orchestration through Fivetran in our [Transformations for dbt Core setup guides](https://fivetran.com/docs/transformations/dbt#setupguide).
 </details>
 
 # 🔍 Does this package have dependencies?
-This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
-> **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**
+This dbt package is dependent on the following dbt packages. For more information on the following packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
+> IMPORTANT: If you have any of these dependent packages in your own `packages.yml` file, we highly recommend that you remove them to avoid package version conflicts.
 ```yml
 packages:
     - package: fivetran/fivetran_utils
@@ -91,12 +99,12 @@ packages:
 ## Package Maintenance
 The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github_source/latest/) of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_github_source/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
 
-## Contributions
-These dbt packages are developed by a small team of analytics engineers at Fivetran. However, the packages are made better by community contributions! 
+### Contributions
+A small team of analytics engineers at Fivetran develops these dbt packages. However, the packages are made better by community contributions! 
 
-We highly encourage and welcome contributions to this package. Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package!
+We highly encourage and welcome contributions to this package. Check out [this dbt Discourse article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) to learn how to contribute to a dbt package!
 
 # 🏪 Are there any resources available?
-- If you encounter any questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_github_source/issues/new/choose) section to find the right avenue of support for you.
-- If you would like to provide feedback to the dbt package team at Fivetran, or would like to request a future dbt package to be developed, then feel free to fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).
-- Have questions or want to just say hi? Book a time during our office hours [here](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or send us an email at solutions@fivetran.com.
+- If you have questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_github_source/issues/new/choose) section to find the right avenue of support for you.
+- If you would like to provide feedback to the dbt package team at Fivetran or would like to request a new dbt package, fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).
+- Have questions or want to just say hi? Book a time during our office hours [on Calendly](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or email us at solutions@fivetran.com.
