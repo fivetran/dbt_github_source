@@ -20,7 +20,7 @@
   - Adds freshness tests to source data
   - Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
 - Generates a comprehensive data dictionary of your GitHub data through the [dbt docs site](https://fivetran.github.io/dbt_github_source/).
-- These tables are designed to work simultaneously with our [GitHub transformation package](https://github.com/fivetran/dbt_github). Learn more about these models on the [dbt docs site](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1). 
+- These tables are designed to work simultaneously with our [GitHub transformation package](https://github.com/fivetran/dbt_github).
 
 
 # 🎯 How do I use the dbt package?
