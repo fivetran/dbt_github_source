@@ -15,14 +15,12 @@
 
 # GitHub Source dbt Package ([Docs](https://fivetran.github.io/dbt_github_source/))
 # 📣 What does this dbt package do?
-- Cleans, tests, and prepares your GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/github) for analysis by doing the following:
+- Materializes [GitHub staging tables](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1) which leverage data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/). These staging tables clean, test, and prepare your GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/github) for analysis by doing the following:
   - Adds descriptions to tables and columns that are synced using Fivetran
   - Adds freshness tests to source data
   - Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
-  - Models staging tables, which will be used in our transform package 
 - Generates a comprehensive data dictionary of your GitHub data through the [dbt docs site](https://fivetran.github.io/dbt_github_source/).
-- Materializes staging tables which leverage data in the format described by [this ERD](https://docs.google.com/presentation/d/1lx6ez7-x-s-n2JCnCi3SjG4XMmx9ysNUvaNCaWc3I_I/). These tables are designed to work simultaneously with our [GitHub modeling package](https://github.com/fivetran/dbt_github). Learn more about these models on the [dbt docs site](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1). 
-This package enriches your Fivetran data by doing the following:
+- These tables are designed to work simultaneously with our [GitHub transformation package](https://github.com/fivetran/dbt_github). Learn more about these models on the [dbt docs site](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1). 
 
 
 # 🎯 How do I use the dbt package?
