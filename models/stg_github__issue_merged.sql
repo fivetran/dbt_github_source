@@ -25,7 +25,7 @@ with issue_merged as (
 
     select 
       issue_id,
-      cast(merged_at as {{ dbt_utils.type_timestamp() }}) as merged_at
+      cast(merged_at as {{ dbt.type_timestamp() }}) as merged_at
 
     from macro
 )

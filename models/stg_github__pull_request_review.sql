@@ -26,7 +26,7 @@ with pull_request_review as (
     select 
       id as pull_request_review_id,
       pull_request_id,
-      cast(submitted_at as {{ dbt_utils.type_timestamp() }}) as submitted_at,
+      cast(submitted_at as {{ dbt.type_timestamp() }}) as submitted_at,
       state,
       user_id
 
