@@ -23,7 +23,7 @@
 # 🎯 How do I use the dbt package?
 ## Step 1: Prerequisites
 To use this dbt package, you must have the following:
-- At least one Fivetran github connector syncing data into your destination. 
+- At least one Fivetran Github connector syncing data into your destination. 
 - A **BigQuery**, **Snowflake**, or **Redshift** destination.
 
 ## Step 2: Install the package
