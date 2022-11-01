@@ -1,6 +1,6 @@
 # dbt_github_source v0.6.0
-## 🚨 Breaking Changes 🚨:
 [PR #26](https://github.com/fivetran/dbt_github_source/pull/26) includes the following breaking changes:
+## 🚨 Breaking Changes 🚨:
 - Dispatch update for dbt-utils to dbt-core cross-db macros migration. Specifically `{{ dbt_utils.<macro> }}` have been updated to `{{ dbt.<macro> }}` for the below macros:
     - `any_value`
     - `bool_or`
@@ -35,6 +35,11 @@
     - `dbt.current_timestamp_backcompat`
     - `dbt.current_timestamp_in_utc_backcompat`
 - Dependencies on `fivetran/fivetran_utils` have been upgraded, previously `[">=0.3.0", "<0.4.0"]` now `[">=0.4.0", "<0.5.0"]`.
+
+## 🎉 Documentation and Feature Updates 🎉:
+- Updated README documentation for easier navigation and dbt package setup.
+- Included the `github_[source_table_name]_identifier` variables for easier flexibility of the package models to refer to differently named sources tables.
+
 # dbt_github_source v0.5.0
 
 ## 🚨  Breaking Changes 🚨 
