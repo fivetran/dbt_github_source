@@ -136,7 +136,7 @@ sources:
             
       - name: pull_request
         loaded_at_field: _fivetran_synced
-        dentifier:  "{{ var('github_pull_request_identifier', 'pull_request')}}"
+        identifier:  "{{ var('github_pull_request_identifier', 'pull_request')}}"
         description: A special type of issue that is created when a user wants to merge one branch of code into another
         columns:
           - name: id
