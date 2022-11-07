@@ -37,8 +37,9 @@
 - Dependencies on `fivetran/fivetran_utils` have been upgraded, previously `[">=0.3.0", "<0.4.0"]` now `[">=0.4.0", "<0.5.0"]`.
 
 ## 🎉 Documentation and Feature Updates 🎉:
-- Updated README documentation for easier navigation and dbt package setup.
-- Included the `github_[source_table_name]_identifier` variables for easier flexibility of the package models to refer to differently named sources tables.
+- Updated README documentation for easier navigation and dbt package setup [#26](https://github.com/fivetran/dbt_github_source/pull/26).
+- Included the `github_[source_table_name]_identifier` variables for easier flexibility of the package models to refer to differently named sources tables [#26](https://github.com/fivetran/dbt_github_source/pull/26).
+- Added Databricks compatibility [#29](https://github.com/fivetran/dbt_github_source/pull/29).
 
 # dbt_github_source v0.5.0
 
