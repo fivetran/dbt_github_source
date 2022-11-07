@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: github
-    database: "{{var ('github_database', target.database)}}"
+    database: "{% if target.type != 'spark'%}{{ var('github_database', target.database) }}{% endif %}"
     schema: "{{var ('github_schema', 'github')}}"
     loader: fivetran
     loaded_at_field: _fivetran_synced
