@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: github
-    database: "{{var ('github_database', target.database)}}"
+    database: "{% if target.type != 'spark'%}{{ var('github_database', target.database) }}{% endif %}"
     schema: "{{var ('github_schema', 'github')}}"
     loader: fivetran
     loaded_at_field: _fivetran_synced
@@ -14,6 +14,7 @@ sources:
     tables:
       - name: issue_assignee
         loaded_at_field: _fivetran_synced
+        identifier:  "{{ var('github_issue_assignee_identifier', 'issue_assignee')}}"
         description: Table with the current user(s) assigned to an issue
         columns:
           - name: issue_id
@@ -22,6 +23,7 @@ sources:
             description: Foreign key that references the user table
 
       - name: label
+        identifier:  "{{ var('github_label_identifier', 'label')}}"
         description: Table that contains labels that are used across your Github account within individual repositories.
         freshness: null
         columns:
@@ -42,6 +44,7 @@ sources:
 
       - name: issue_closed_history
         loaded_at_field: _fivetran_synced
+        identifier:  "{{ var('github_issue_closed_history_identifier', 'issue_closed_history')}}"
         description: Table to track when an issue is closed or re-opened
         columns:
           - name: issue_id
@@ -53,6 +56,7 @@ sources:
 
       - name: issue_label
         loaded_at_field: _fivetran_synced
+        identifier:  "{{ var('github_issue_label_identifier', 'issue_label')}}"
         description: The current labels attached to an issue
         columns:
           - name: issue_id
@@ -62,6 +66,7 @@ sources:
 
       - name: issue_comment
         loaded_at_field: _fivetran_synced
+        identifier:  "{{ var('github_issue_comment_identifier', 'issue_comment')}}"
         description: Table that contains comments made on issues
         columns:
           - name: id
@@ -73,6 +78,7 @@ sources:
 
       - name: issue_merged
         loaded_at_field: _fivetran_synced
+        identifier:  "{{ var('github_issue_merged_identifier', 'issue_merged')}}"
         description: Table that tracks when an issue (always a pull request) is merged
         columns:
           - name: issue_id
@@ -82,6 +88,7 @@ sources:
 
       - name: issue
         loaded_at_field: _fivetran_synced
+        identifier:  "{{ var('github_issue_identifier', 'issue')}}"
         description: Table that contains 1 entry for every issue created.  Pull Requests also create an entry in this table, and there is a boolean field to determine if an entry is a pull request.
         columns:
           - name: id
@@ -113,6 +120,7 @@ sources:
 
       - name: pull_request_review
         loaded_at_field: _fivetran_synced
+        identifier:  "{{ var('github_pull_request_review_identifier', 'pull_request_review')}}"
         description: Table containing reviews made to pull requests
         columns:
           - name: id
@@ -128,6 +136,7 @@ sources:
             
       - name: pull_request
         loaded_at_field: _fivetran_synced
+        identifier:  "{{ var('github_pull_request_identifier', 'pull_request')}}"
         description: A special type of issue that is created when a user wants to merge one branch of code into another
         columns:
           - name: id
@@ -140,6 +149,7 @@ sources:
             description: Foreign key that references the user table, referencing who created the current branch.
 
       - name: repo_team
+        identifier:  "{{ var('github_repo_team_identifier', 'repo_team')}}"
         description: Table representing the mapping relationships between repositories and teams
         meta:
           is_enabled: "{{ var('github__using_repo_team', true) }}"
@@ -150,6 +160,7 @@ sources:
             description: Reference to the respective team for the record.
             
       - name: repository
+        identifier:  "{{ var('github_repository_identifier', 'repository')}}"
         description: Table representing the file structure of a directory under git control
         freshness: null
         columns:
@@ -164,6 +175,7 @@ sources:
             
       - name: requested_reviewer_history
         loaded_at_field: _fivetran_synced
+        identifier:  "{{ var('github_requested_reviewer_history_identifier', 'requested_reviewer_history')}}"
         description: Table containing when a user requests another user to review a pull request
         columns:
           - name: pull_request_id
@@ -176,6 +188,7 @@ sources:
             description: Boolean variable indicating if the requester was removed from the PR (true) or added to the PR (false).
 
       - name: team
+        identifier:  "{{ var('github_team_identifier', 'team')}}"
         description: Table containing teams and team details
         columns:
           - name: id
@@ -192,6 +205,7 @@ sources:
             description: Url friendly version of the team name.
             
       - name: user
+        identifier:  "{{ var('github_user_identifier', 'user')}}"
         description: Table representing contributors to a git project
         freshness: null
         columns:

@@ -25,7 +25,7 @@ with requested_reviewer_history as (
 
     select 
       pull_request_id,
-      cast(created_at as {{ dbt_utils.type_timestamp() }}) as created_at,
+      cast(created_at as {{ dbt.type_timestamp() }}) as created_at,
       requested_id,
       removed
 
