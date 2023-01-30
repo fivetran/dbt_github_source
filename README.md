@@ -24,7 +24,7 @@
 ## Step 1: Prerequisites
 To use this dbt package, you must have the following:
 - At least one Fivetran Github connector syncing data into your destination. 
-- A **BigQuery**, **Snowflake**, **Redshift** or **Databricks**  destination.
+- A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL** or **Databricks**  destination.
 
 ### Databricks Dispatch Configuration
 If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` packages respectively.
@@ -40,7 +40,7 @@ Include the following github_source package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/github_source
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 ```
 
 ## Step 3: Define database and schema variables
