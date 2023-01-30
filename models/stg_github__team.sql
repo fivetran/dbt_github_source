@@ -1,3 +1,4 @@
+{{ config(enabled=var('github__using_repo_team', True)) }}
 
 with base as (
 

@@ -55,7 +55,7 @@ vars:
 ## Step 4: Disable models for non-existent sources
 Your Github connector might not sync every table that this package expects. If your syncs exclude certain tables, it is because you either don't use that functionality in Github or have actively excluded some tables from your syncs.
 
-If you do not have the `REPO_TEAM` table synced, add the following variable to your `dbt_project.yml` file:
+If you do not have the `TEAM` and `REPO_TEAM` tables synced, add the following variable to your `dbt_project.yml` file:
 
 ```yml
 vars:
