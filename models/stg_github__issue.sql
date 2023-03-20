@@ -26,8 +26,8 @@ with issue as (
     select 
       id as issue_id,
       body,
-      cast(closed_at as {{ dbt_utils.type_timestamp() }}) as closed_at,
-      cast(created_at as {{ dbt_utils.type_timestamp() }}) as created_at,
+      cast(closed_at as {{ dbt.type_timestamp() }}) as closed_at,
+      cast(created_at as {{ dbt.type_timestamp() }}) as created_at,
       locked as is_locked,
       milestone_id,
       number as issue_number,
@@ -35,7 +35,7 @@ with issue as (
       repository_id,
       state,
       title,
-      cast(updated_at as {{ dbt_utils.type_timestamp() }}) as updated_at,
+      cast(updated_at as {{ dbt.type_timestamp() }}) as updated_at,
       user_id
       
     from macro
