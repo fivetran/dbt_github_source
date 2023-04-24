@@ -1,3 +1,9 @@
+# dbt_github_source v0.UPDATE.UPDATE
+
+ ## Under the Hood:
+
+- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
+- Updated the pull request [templates](/.github).
 # dbt_github_source v0.7.0
 ## 🚨 Breaking Change 🚨
 - Expanded the variable `github__using_repo_team` to also toggle on/off the `TEAM` table along with and in addition to the `REPO_TEAM` table. This was done to fix issues with dependent models in our transform package, where `TEAM` is only ever used in conjunction with `REPO_TEAM`. ([#32](https://github.com/fivetran/dbt_github_source/pull/32))
