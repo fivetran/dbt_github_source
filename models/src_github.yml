@@ -4,7 +4,7 @@ sources:
   - name: github
     database: "{% if target.type != 'spark'%}{{ var('github_database', target.database) }}{% endif %}"
     schema: "{{var ('github_schema', 'github')}}"
-    loader: fivetran
+    loader: Fivetran
     loaded_at_field: _fivetran_synced
     freshness:
       warn_after: {count: 72, period: hour}
