@@ -4,7 +4,7 @@
 [PR #37](https://github.com/fivetran/dbt_github_source/pull/37) includes the following update:
 - Updated `src_github.yml` to capitalize Fivetran in the loader definition, to mirror use in other Fivetran packages.
 
-## Under the Hood:
+## Under the Hood
 [PR #34](https://github.com/fivetran/dbt_github_source/pull/34) includes the following updates:
 - Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
 - Updated the pull request [templates](/.github).
