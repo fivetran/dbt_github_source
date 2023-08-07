@@ -1,13 +1,17 @@
-# dbt_github_source v0.UPDATE.UPDATE
-
 # dbt_github_source v0.7.1
 
 ## Fixes
-- Updated src_github.yml to capitalize Fivetran in the loader definition, to mirror use in other Fivetran packages.
- ## Under the Hood:
+[PR #37](https://github.com/fivetran/dbt_github_source/pull/37) includes the following update:
+- Updated `src_github.yml` to capitalize Fivetran in the loader definition, to mirror use in other Fivetran packages.
 
+## Under the Hood:
+[PR #34](https://github.com/fivetran/dbt_github_source/pull/34) includes the following updates:
 - Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
 - Updated the pull request [templates](/.github).
+
+## Contributors
+- [@raphaelvarieras](https://github.com/raphaelvarieras) ([PR #37](https://github.com/fivetran/dbt_github_source/pull/37))
+
 # dbt_github_source v0.7.0
 ## 🚨 Breaking Change 🚨
 - Expanded the variable `github__using_repo_team` to also toggle on/off the `TEAM` table along with and in addition to the `REPO_TEAM` table. This was done to fix issues with dependent models in our transform package, where `TEAM` is only ever used in conjunction with `REPO_TEAM`. ([#32](https://github.com/fivetran/dbt_github_source/pull/32))
