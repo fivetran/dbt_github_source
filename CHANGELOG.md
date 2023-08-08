@@ -1,13 +1,11 @@
 # dbt_github_source v0.7.1
 
 ## Fixes
-[PR #37](https://github.com/fivetran/dbt_github_source/pull/37) includes the following update:
-- Updated `src_github.yml` to capitalize Fivetran in the loader definition, to mirror use in other Fivetran packages.
+- Updated `src_github.yml` to capitalize Fivetran in the loader definition, to mirror use in other Fivetran packages. ([PR #37](https://github.com/fivetran/dbt_github_source/pull/37))
 
 ## Under the Hood
-[PR #34](https://github.com/fivetran/dbt_github_source/pull/34) includes the following updates:
-- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
-- Updated the pull request [templates](/.github).
+- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job. ([PR #34](https://github.com/fivetran/dbt_github_source/pull/34))
+- Updated the pull request [templates](/.github). ([PR #34](https://github.com/fivetran/dbt_github_source/pull/34))
 
 ## Contributors
 - [@raphaelvarieras](https://github.com/raphaelvarieras) ([PR #37](https://github.com/fivetran/dbt_github_source/pull/37))
