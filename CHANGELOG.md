@@ -1,3 +1,9 @@
+# dbt_github_source v0.8.0
+[PR #39](https://github.com/fivetran/dbt_jira/dbt_github_source/39) contains the following updates:
+
+## Fixes
+- materialized
+
 # dbt_github_source v0.7.1
 
 ## Fixes

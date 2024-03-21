@@ -1,13 +1,13 @@
 config-version: 2
 name: 'github_source'
-version: '0.7.1'
+version: '0.8.0'
 require-dbt-version: [">=1.3.0", "<2.0.0"]
 models:
   github_source:
-    tmp:
-      +materialized: view
     +materialized: table
     +schema: github_source
+    tmp:
+      +materialized: view
 vars:
   github_source:
     issue_assignee: "{{ source('github', 'issue_assignee') }}"
