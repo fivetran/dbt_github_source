@@ -2,7 +2,7 @@
 [PR #39](https://github.com/fivetran/dbt_jira/dbt_github_source/39) contains the following updates:
 
 ## 🚨 Breaking Change 🚨
-- For consistency with other Fivetran packages, added default target schemas in `dbt_project.yml`. This is a breaking change since the model outputs will now be stored in a schema called `<your schema>_github_source` by default. You will need to update any of your downstream use cases to point to the new schema. 
+- For consistency with other Fivetran packages, added default target schemas in `dbt_project.yml`. This is a breaking change since the model outputs will now be stored in a schema called `<your target schema>_github_source` by default. You will need to update any of your downstream use cases to point to the new schema. 
   - Refer to [the Change the Build Schema section](https://github.com/fivetran/dbt_github_source/blob/main/README.md#change-the-build-schema) of the README for instructions on how to adjust the output schema.
 
 ## Feature updates
