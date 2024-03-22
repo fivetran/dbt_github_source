@@ -1,8 +1,13 @@
 # dbt_github_source v0.8.0
 [PR #39](https://github.com/fivetran/dbt_jira/dbt_github_source/39) contains the following updates:
 
-## Fixes
-- materialized
+## Feature updates
+- Added field `created_at` to model `stg_github__issue_comment`.
+- Added default target schemas in `dbt_project.yml`.
+- Updated the source freshness test enablement/disablement to leverage the dbt-core `config: enabled` architecture.
+
+## Contributors
+- [@rajan-lw](https://github.com/rajan-lw) ([PR #33](https://github.com/fivetran/dbt_github_source/pull/33))
 
 # dbt_github_source v0.7.1
 

@@ -24,9 +24,10 @@ with issue_comment as (
 ), fields as (
 
     select 
-      id as issue_comment_id,
-      issue_id,
-      user_id
+        id as issue_comment_id,
+        issue_id,
+        user_id,
+        created_at
 
     from macro
 )
