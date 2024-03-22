@@ -70,6 +70,8 @@ models:
         description: Foreign key that references the issue table
       - name: user_id
         description: Foreign key that references the user table
+      - name: created_at
+        description: Timestamp of when the issue comment was created.
 
   - name: stg_github__issue_merged
     description: Table that tracks when an issue (always a pull request) is merged

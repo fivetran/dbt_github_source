@@ -45,7 +45,7 @@ Include the following github_source package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/github_source
-    version: [">=0.7.0", "<0.8.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=0.8.0", "<0.9.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 ## Step 3: Define database and schema variables
@@ -69,10 +69,10 @@ vars:
 *Note: This package only integrates the above variable. If you'd like to disable other models, please create an [issue](https://github.com/fivetran/dbt_github_source/issues) specifying which ones.*
 
 ## (Optional) Step 5: Additional configurations
-<details><summary>Expand to view configurations</summary>
+<details open><summary>Expand/collapse configurations</summary>
 
 ### Change the build schema
-By default, this package builds the github staging models within a schema titled (`<target_schema>` + `_stg_github`) in your destination. If this is not where you would like your github staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
+By default, this package builds the github staging models within a schema titled (`<target_schema>` + `_github_source`) in your destination. If this is not where you would like your github staging data to be written, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:

@@ -75,6 +75,8 @@ sources:
             description: Foreign key that references the issue table
           - name: user_id
             description: Foreign key that references the user table
+          - name: created_at
+            description: Timestamp of when the issue comment was created.
 
       - name: issue_merged
         loaded_at_field: _fivetran_synced
@@ -151,8 +153,8 @@ sources:
       - name: repo_team
         identifier:  "{{ var('github_repo_team_identifier', 'repo_team')}}"
         description: Table representing the mapping relationships between repositories and teams
-        meta:
-          is_enabled: "{{ var('github__using_repo_team', true) }}"
+        config:
+          enabled: "{{ var('github__using_repo_team', true) }}"
         columns:
           - name: repository_id
             description: Reference to the respective repository for the record.
