@@ -1,9 +1,11 @@
 # dbt_github_source v0.8.0
 [PR #39](https://github.com/fivetran/dbt_jira/dbt_github_source/39) contains the following updates:
 
+## 🚨 Breaking Change 🚨
+- For consistency with other Fivetran packages, added default target schemas in `dbt_project.yml`. This is a breaking change since the model outputs will now be stored in a schema called `<your schema>_github_source` by default. You will need to update any of your downstream use cases to point to the new schema.
+
 ## Feature updates
 - Added field `created_at` to model `stg_github__issue_comment`.
-- Added default target schemas in `dbt_project.yml`.
 - Updated the source freshness test enablement/disablement to leverage the dbt-core `config: enabled` architecture.
 
 ## Contributors
