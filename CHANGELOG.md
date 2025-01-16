@@ -1,3 +1,8 @@
+# dbt_github_source version.version
+
+## Documentation
+- Corrected references to connectors and connections in the README. ([#42](https://github.com/fivetran/dbt_github_source/pull/42))
+
 # dbt_github_source v0.8.0
 [PR #39](https://github.com/fivetran/dbt_jira/dbt_github_source/39) contains the following updates:
 
