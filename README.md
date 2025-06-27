@@ -1,4 +1,6 @@
-<p align="center">
+# Github Source dbt Package ([Docs](https://fivetran.github.io/dbt_github_source/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_github_source/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -13,8 +15,6 @@
         <img src="https://img.shields.io/badge/Fivetran_Quickstart_Compatible%3F-yes-green.svg" /></a>
 </p>
 
-
-# Github Source dbt Package ([Docs](https://fivetran.github.io/dbt_github_source/))
 ## What does this dbt package do?
 <!--section="github_source_model"-->
 - Materializes [Github staging tables](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1&g_e=seeds) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/github/#schemainformation). These staging tables clean, test, and prepare your Github data from [Fivetran's connector](https://fivetran.com/docs/applications/github) for analysis by doing the following:
@@ -66,8 +66,12 @@ If you do not have the `TEAM` and `REPO_TEAM` tables synced, add the following v
 ```yml
 vars:
     github__using_repo_team: false # by default this is assumed to be true
+    github__using_issue_assignee: false # by default this is assumed to be true
+    github__using_issue_label: false # by default this is assumed to be true
+    github__using_label: false # by default this is assumed to be true
+    github__using_requested_reviewer_history: false # by default this is assumed to be true
 ```
-*Note: This package only integrates the above variable. If you'd like to disable other models, please create an [issue](https://github.com/fivetran/dbt_github_source/issues) specifying which ones.*
+*Note: This package only integrates the above variables. If you'd like to disable other models, please create an [issue](https://github.com/fivetran/dbt_github_source/issues) specifying which ones.*
 
 ### (Optional) Step 5: Additional configurations
 <details open><summary>Expand/collapse configurations</summary>
