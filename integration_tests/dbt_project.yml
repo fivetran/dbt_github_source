@@ -20,6 +20,8 @@ vars:
     github_team_identifier: "github_team_data"
     github_user_identifier: "github_user_data"
 seeds:
+  +docs:
+    show: false
   +quote_columns: "{{ true if target.type == 'redshift' else false }}"
   github_source_integration_tests:
     +column_types:
