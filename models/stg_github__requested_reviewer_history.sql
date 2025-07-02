@@ -1,3 +1,5 @@
+{{ config(enabled=var('github__using_requested_reviewer_history', True)) }}
+
 with requested_reviewer_history as (
 
     select *

@@ -1,5 +1,5 @@
 name: 'github_source_integration_tests'
-version: '0.9.0'
+version: '0.9.1'
 config-version: 2
 profile: 'integration_tests'
 vars:
@@ -20,6 +20,8 @@ vars:
     github_team_identifier: "github_team_data"
     github_user_identifier: "github_user_data"
 seeds:
+  +docs:
+    show: false
   +quote_columns: "{{ true if target.type == 'redshift' else false }}"
   github_source_integration_tests:
     +column_types:

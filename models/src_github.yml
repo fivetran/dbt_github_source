@@ -17,6 +17,8 @@ sources:
         loaded_at_field: _fivetran_synced
         identifier:  "{{ var('github_issue_assignee_identifier', 'issue_assignee')}}"
         description: Table with the current user(s) assigned to an issue
+        config:
+          enabled: "{{ var('github__using_issue_assignee', true) }}"
         columns:
           - name: issue_id
             description: Foreign key that references the issue table
@@ -28,6 +30,7 @@ sources:
         description: Table that contains labels that are used across your Github account within individual repositories.
         config:
           freshness: null
+          enabled: "{{ var('github__using_label', true) }}"
         columns:
           - name: id
             description: Unique identifier of the Github label
@@ -60,6 +63,8 @@ sources:
         loaded_at_field: _fivetran_synced
         identifier:  "{{ var('github_issue_label_identifier', 'issue_label')}}"
         description: The current labels attached to an issue
+        config:
+          enabled: "{{ var('github__using_issue_label', true) }}"
         columns:
           - name: issue_id
             description: Foreign key that references the issue table
@@ -182,6 +187,8 @@ sources:
         loaded_at_field: _fivetran_synced
         identifier:  "{{ var('github_requested_reviewer_history_identifier', 'requested_reviewer_history')}}"
         description: Table containing when a user requests another user to review a pull request
+        config:
+          enabled: "{{ var('github__using_requested_reviewer_history', true) }}"
         columns:
           - name: pull_request_id
             description: Foreign key that references the pull request table.
