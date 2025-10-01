@@ -1,4 +1,4 @@
-# [DEPRECATED] Github Source dbt Package
+# [DEPRECATED] GitHub Source dbt Package
 
 > _This package has been archived and is no longer maintained. Use [`dbt_github`](https://github.com/fivetran/dbt_github) instead, which now contains all models previously found here._
 
@@ -15,19 +15,19 @@
 
 ## What does this dbt package do?
 <!--section="github_source_model"-->
-- Materializes [Github staging tables](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1&g_e=seeds) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/github/#schemainformation). These staging tables clean, test, and prepare your Github data from [Fivetran's connector](https://fivetran.com/docs/applications/github) for analysis by doing the following:
+- Materializes [GitHub staging tables](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1&g_e=seeds) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/github/#schemainformation). These staging tables clean, test, and prepare your GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/github) for analysis by doing the following:
   - Name columns for consistency across all packages and for easier analysis
   - Adds freshness tests to source data
     - dbt Core >= 1.9.6 is required to run freshness tests out of the box
   - Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
-- Generates a comprehensive data dictionary of your Github data through the [dbt docs site](https://fivetran.github.io/dbt_github_source/).
-- These tables are designed to work simultaneously with our [Github transformation package](https://github.com/fivetran/dbt_github).
+- Generates a comprehensive data dictionary of your GitHub data through the [dbt docs site](https://fivetran.github.io/dbt_github_source/).
+- These tables are designed to work simultaneously with our [GitHub transformation package](https://github.com/fivetran/dbt_github).
 <!--section-end-->
 
 ## How do I use the dbt package?
 ### Step 1: Prerequisites
 To use this dbt package, you must have the following:
-- At least one Fivetran Github connection syncing data into your destination.
+- At least one Fivetran GitHub connection syncing data into your destination.
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL** or **Databricks**  destination.
 
 #### Databricks Dispatch Configuration
@@ -57,7 +57,7 @@ vars:
 ```
 
 ### Step 4: Disable models for non-existent sources
-Your Github connection might not sync every table that this package expects. If your syncs exclude certain tables, it is because you either don't use that functionality in Github or have actively excluded some tables from your syncs.
+Your GitHub connection might not sync every table that this package expects. If your syncs exclude certain tables, it is because you either don't use that functionality in GitHub or have actively excluded some tables from your syncs.
 
 If you do not have the `TEAM`, `REPO_TEAM`, `ISSUE_ASSIGNEE`, `ISSUE_LABEL`, `LABEL`, or `REQUESTED_REVIEWER_HISTORY` tables synced and are not running the package via Fivetran Quickstart, add the following variables to your `dbt_project.yml` file:
 
