@@ -1,4 +1,6 @@
-<p align="center">
+# GitHub Source dbt Package ([Docs](https://fivetran.github.io/dbt_github_source/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_github_source/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -13,13 +15,12 @@
         <img src="https://img.shields.io/badge/Fivetran_Quickstart_Compatible%3F-yes-green.svg" /></a>
 </p>
 
-
-# GitHub Source dbt Package ([Docs](https://fivetran.github.io/dbt_github_source/))
 ## What does this dbt package do?
 <!--section="github_source_model"-->
 - Materializes [GitHub staging tables](https://fivetran.github.io/dbt_github_source/#!/overview/github_source/models/?g_v=1&g_e=seeds) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/github/#schemainformation). These staging tables clean, test, and prepare your GitHub data from [Fivetran's connector](https://fivetran.com/docs/applications/github) for analysis by doing the following:
   - Name columns for consistency across all packages and for easier analysis
   - Adds freshness tests to source data
+    - dbt Core >= 1.9.6 is required to run freshness tests out of the box
   - Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
 - Generates a comprehensive data dictionary of your GitHub data through the [dbt docs site](https://fivetran.github.io/dbt_github_source/).
 - These tables are designed to work simultaneously with our [GitHub transformation package](https://github.com/fivetran/dbt_github).
@@ -45,7 +46,7 @@ Include the following github_source package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/github_source
-    version: [">=0.8.0", "<0.9.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=0.9.0", "<0.10.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 ### Step 3: Define database and schema variables
@@ -60,13 +61,17 @@ vars:
 ### Step 4: Disable models for non-existent sources
 Your GitHub connection might not sync every table that this package expects. If your syncs exclude certain tables, it is because you either don't use that functionality in GitHub or have actively excluded some tables from your syncs.
 
-If you do not have the `TEAM` and `REPO_TEAM` tables synced, add the following variable to your `dbt_project.yml` file:
+If you do not have the `TEAM`, `REPO_TEAM`, `ISSUE_ASSIGNEE`, `ISSUE_LABEL`, `LABEL`, or `REQUESTED_REVIEWER_HISTORY` tables synced and are not running the package via Fivetran Quickstart, add the following variables to your `dbt_project.yml` file:
 
 ```yml
 vars:
-    github__using_repo_team: false # by default this is assumed to be true
+    github__using_repo_team: false # by default this is assumed to be true. Set to false if missing TEAM or REPO_TEAM
+    github__using_issue_assignee: false # by default this is assumed to be true
+    github__using_issue_label: false # by default this is assumed to be true
+    github__using_label: false # by default this is assumed to be true
+    github__using_requested_reviewer_history: false # by default this is assumed to be true
 ```
-*Note: This package only integrates the above variable. If you'd like to disable other models, please create an [issue](https://github.com/fivetran/dbt_github_source/issues) specifying which ones.*
+*Note: This package only integrates the above variables. If you'd like to disable other models, please create an [issue](https://github.com/fivetran/dbt_github_source/issues) specifying which ones.*
 
 ### (Optional) Step 5: Additional configurations
 <details open><summary>Expand/collapse configurations</summary>

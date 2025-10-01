@@ -6,9 +6,10 @@ sources:
     schema: "{{var ('github_schema', 'github')}}"
     loader: Fivetran
     loaded_at_field: _fivetran_synced
-    freshness:
-      warn_after: {count: 72, period: hour}
-      error_after: {count: 168, period: hour}
+    config:
+      freshness:
+        warn_after: {count: 72, period: hour}
+        error_after: {count: 168, period: hour}
 
 
     tables:
@@ -16,6 +17,8 @@ sources:
         loaded_at_field: _fivetran_synced
         identifier:  "{{ var('github_issue_assignee_identifier', 'issue_assignee')}}"
         description: Table with the current user(s) assigned to an issue
+        config:
+          enabled: "{{ var('github__using_issue_assignee', true) }}"
         columns:
           - name: issue_id
             description: Foreign key that references the issue table
@@ -25,7 +28,9 @@ sources:
       - name: label
         identifier:  "{{ var('github_label_identifier', 'label')}}"
         description: Table that contains labels that are used across your Github account within individual repositories.
-        freshness: null
+        config:
+          freshness: null
+          enabled: "{{ var('github__using_label', true) }}"
         columns:
           - name: id
             description: Unique identifier of the Github label
@@ -58,6 +63,8 @@ sources:
         loaded_at_field: _fivetran_synced
         identifier:  "{{ var('github_issue_label_identifier', 'issue_label')}}"
         description: The current labels attached to an issue
+        config:
+          enabled: "{{ var('github__using_issue_label', true) }}"
         columns:
           - name: issue_id
             description: Foreign key that references the issue table
@@ -164,7 +171,8 @@ sources:
       - name: repository
         identifier:  "{{ var('github_repository_identifier', 'repository')}}"
         description: Table representing the file structure of a directory under git control
-        freshness: null
+        config:
+          freshness: null
         columns:
           - name: id
             description: System generated unique id for the repository.
@@ -179,6 +187,8 @@ sources:
         loaded_at_field: _fivetran_synced
         identifier:  "{{ var('github_requested_reviewer_history_identifier', 'requested_reviewer_history')}}"
         description: Table containing when a user requests another user to review a pull request
+        config:
+          enabled: "{{ var('github__using_requested_reviewer_history', true) }}"
         columns:
           - name: pull_request_id
             description: Foreign key that references the pull request table.
@@ -209,7 +219,8 @@ sources:
       - name: user
         identifier:  "{{ var('github_user_identifier', 'user')}}"
         description: Table representing contributors to a git project
-        freshness: null
+        config:
+          freshness: null
         columns:
           - name: id
             description: System generated unique id for the user.
